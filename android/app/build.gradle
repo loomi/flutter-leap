@@ -50,6 +50,32 @@ android {
         versionName flutterVersionName
     }
 
+    // flavorDimensions "app"
+    // productFlavors {
+    //     production {
+    //         dimension "app"
+    //         applicationId ""
+    //         versionCode flutterVersionCode.toInteger()
+    //         versionName flutterVersionName
+    //         multiDexEnabled true
+    //     }
+    //     homolog {
+    //         dimension "app"
+    //         applicationId ".homolog"
+    //         versionCode flutterVersionCode.toInteger()
+    //         versionName flutterVersionName
+    //         multiDexEnabled true
+    //     }
+    //     staging {
+    //         dimension "app"
+    //         applicationId ".staging"
+    //         versionCode flutterVersionCode.toInteger()
+    //         versionName flutterVersionName
+    //         multiDexEnabled true
+    //     }
+    // }
+
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
