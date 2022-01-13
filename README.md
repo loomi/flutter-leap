@@ -1,22 +1,62 @@
-# loomi_flutter_boilerplate
+#
+<p align="center">
+  <img src="" alt="" width="" />
+</p>
 
-A new Flutter project.
+<h1 align="center">Loomi Flutter Leap</h1>
 
-## Usefull commands
 
-flutter pub get
+### Userful links
+- [Mockup]()
+- [Tasks list]()
 
-flutter pub run build_runner build --delete-conflicting-outputs
+###
+#### Depends on Flutter 2.5.3
 
-## Getting Started
+## 📋 Flutter APP commands
 
-This project is a starting point for a Flutter application.
+### Dependencies update
 
-A few resources to get you started if this is your first Flutter project:
++  `flutter pub get`
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### MobX store and retrofit generation
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
++  `flutter pub run build_runner build --delete-conflicting-outputs`
+
+### Icons generation
+
++ `flutter pub run flutter_launcher_icons:main`
+
+### Code analysis
+
++ `flutter analyze`
+
+## 🏃‍♂️How to run
+
+> First, we need to update dependencies and generate code
+
++  `flutter pub get`
++  `flutter pub run build_runner build --delete-conflicting-outputs`
+
+> After that, we can run the application
+
+#### On Android:
+
++ `flutter run`
+
+#### On iOS:
+
++ `🚧 This section is under construction 🚧`
+
+## 📚 Stack
+
+- **GetIt** for dependency injection
+- **MobX** for reactivity
+- **Retrofit** for https requests
+- **Json_serializable** for json mapping
+- **Build_runner** for generated code
+
+
+#
+Made with ❤️ by **Loomi**
+
