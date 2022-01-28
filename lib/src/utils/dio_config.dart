@@ -1,25 +1,25 @@
 import 'package:dio/dio.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/env.dart';
+import 'package:loomi_flutter_boilerplate/src/utils/authentication.dart';
+import 'package:loomi_flutter_boilerplate/src/utils/setup_flavors.dart';
 
+// ignore: constant_identifier_names
 const JSON_HEADER = "Content-Type:application/json";
 
+// ignore: constant_identifier_names
 const JSON_HEADER_MULTIPART = "Content-Type:multipart/form-data";
 
 class DioConfig {
   static final DioConfig _instance = DioConfig.internal();
+  static final SetupFlavors setupFlavors = SetupFlavors();
 
   factory DioConfig() => _instance;
 
   DioConfig.internal();
 
   final _dio = Dio();
-  final String _baseUrl = BASE_URL;
+  final String _baseUrl = setupFlavors.baseUrl;
 
   get dio {
-    BaseOptions options = BaseOptions(
-      baseUrl: _baseUrl,
-    );
-
     _dio.options.baseUrl = _baseUrl;
     _dio.options.connectTimeout = 50000; //5s
     _dio.options.receiveTimeout = 30000;
