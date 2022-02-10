@@ -11,7 +11,7 @@
 - [Tasks list]()
 
 ###
-#### Depends on Flutter 2.5.3
+#### Depends on Flutter 2.10.0
 
 ## 📋 Flutter APP commands
 
@@ -42,11 +42,15 @@
 
 #### On Android:
 
-+ `flutter run`
+flavorsOptions = [staging, homolog, production]
+
++ `flutter run --flavor [flavorOption]`
++ Ex: `flutter run --flavor production`
 
 #### On iOS:
 
-+ `🚧 This section is under construction 🚧`
++ `cd ios && pod install`
++ `flutter run -- flavor [flavorOption]`
 
 ## 📚 Stack
 

@@ -26,7 +26,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -54,21 +54,21 @@ android {
     productFlavors {
         production {
             dimension "app"
-            applicationId ""
+            applicationId "com.example.loomi_flutter_boilerplate"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             multiDexEnabled true
         }
         homolog {
             dimension "app"
-            applicationId ".homolog"
+            applicationId "com.example.loomi_flutter_boilerplate.homolog"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             multiDexEnabled true
         }
         staging {
             dimension "app"
-            applicationId ".staging"
+            applicationId "com.example.loomi_flutter_boilerplate.staging"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             multiDexEnabled true
