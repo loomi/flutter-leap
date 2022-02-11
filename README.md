@@ -52,6 +52,12 @@ flavorsOptions = [staging, homolog, production]
 + `cd ios && pod install`
 + `flutter run -- flavor [flavorOption]`
 
+#### To start a new project:
+
++ `replace the 'com.example.loomi_flutter_boilerplate' across all the files with your desired bundleId`
++ `on android/app/src/main/java/kotlin rename the subsequent folder names with your bundle id name`
+
+
 ## 📚 Stack
 
 - **GetIt** for dependency injection
