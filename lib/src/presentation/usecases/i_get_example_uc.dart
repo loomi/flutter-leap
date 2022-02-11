@@ -1,6 +1,5 @@
+import 'package:loomi_flutter_boilerplate/src/external/models/example.dart';
 
-import 'package:loomi_flutter_boilerplate/src/data/models/example.dart';
-
-abstract class IGetExampleUseCase{
-  Future<Example> getExample();
+abstract class IGetExampleUseCase {
+  Future<Example> call();
 }
