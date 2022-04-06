@@ -54,7 +54,7 @@ flavorsOptions = [staging, homolog, production]
 
 #### To start a new project:
 
-+ `replace the 'com.example.loomi_flutter_boilerplate' across all the files with your desired bundleId`
++ `replace the 'com.example.loomiFlutterBoilerplate' across all the files with your desired bundleId`
 + `on android/app/src/main/java/kotlin rename the subsequent folder names with your bundle id name`
 
 

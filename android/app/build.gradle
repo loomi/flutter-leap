@@ -43,7 +43,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.loomi_flutter_boilerplate"
+        applicationId "com.example.loomiFlutterBoilerplate"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
@@ -54,21 +54,21 @@ android {
     productFlavors {
         production {
             dimension "app"
-            applicationId "com.example.loomi_flutter_boilerplate"
+            applicationId "com.example.loomiFlutterBoilerplate"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             multiDexEnabled true
         }
         homolog {
             dimension "app"
-            applicationId "com.example.loomi_flutter_boilerplate.homolog"
+            applicationId "com.example.loomiFlutterBoilerplate.homolog"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             multiDexEnabled true
         }
         staging {
             dimension "app"
-            applicationId "com.example.loomi_flutter_boilerplate.staging"
+            applicationId "com.example.loomiFlutterBoilerplate.staging"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
             multiDexEnabled true
