@@ -3,8 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part "example.g.dart";
 
 @JsonSerializable()
-class Example{
-
+class Example {
   final int id;
   final String name;
 

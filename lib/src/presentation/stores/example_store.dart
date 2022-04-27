@@ -1,8 +1,9 @@
 import 'package:get_it/get_it.dart';
-import 'package:loomi_flutter_boilerplate/src/external/models/example.dart';
-import 'package:loomi_flutter_boilerplate/src/presentation/usecases/i_get_example_uc.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/misc.dart';
 import 'package:mobx/mobx.dart';
+
+import '../../external/models/example.dart';
+import '../../utils/misc.dart';
+import '../usecases/i_get_example_uc.dart';
 
 part 'example_store.g.dart';
 

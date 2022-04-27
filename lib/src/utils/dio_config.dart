@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/authentication.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/setup_flavors.dart';
+
+import 'authentication.dart';
+import 'setups/setup_flavors.dart';
 
 // ignore: constant_identifier_names
 const JSON_HEADER = "Content-Type:application/json";

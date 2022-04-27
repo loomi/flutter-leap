@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:loomi_flutter_boilerplate/src/presentation/views/example_screen.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/custom_colors.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/routes.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/setup_flavors.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/setup_get_it.dart';
+
+import 'src/presentation/views/example_screen.dart';
+import 'src/utils/custom_colors.dart';
+import 'src/utils/routes.dart';
+import 'src/utils/setups/setup_flavors.dart';
+import 'src/utils/setups/setup_get_it.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

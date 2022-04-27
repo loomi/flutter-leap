@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:loomi_flutter_boilerplate/src/presentation/widgets/example_text.dart';
+import 'package:get_it/get_it.dart';
+
+import '../stores/example_store.dart';
+import '../widgets/example_text.dart';
 
 class ExampleScreen extends StatefulWidget {
   const ExampleScreen({Key? key}) : super(key: key);
@@ -11,6 +14,8 @@ class ExampleScreen extends StatefulWidget {
 }
 
 class _ExampleScreenState extends State<ExampleScreen> {
+  final exampleStore = GetIt.I.get<ExampleStore>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
