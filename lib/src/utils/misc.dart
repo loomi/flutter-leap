@@ -1,13 +1,13 @@
-
+import 'dart:developer';
 import 'package:dio/dio.dart';
 
-void printException(String identifier, e, s){
-  print(identifier);
+void printException(String identifier, e, s) {
+  log(identifier);
   if (e is DioError) {
-    print("${e.requestOptions.baseUrl}${e.requestOptions.path}");
-    print(e.response);
-    print(e.error);
+    log("${e.requestOptions.baseUrl}${e.requestOptions.path}");
+    log(e.response.toString());
+    log(e.error);
   }
-  print(e);
-  print(s);
+  log(e);
+  log(s);
 }
