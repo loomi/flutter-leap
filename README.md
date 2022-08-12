@@ -27,6 +27,10 @@
 
 + `flutter pub run flutter_launcher_icons:main`
 
+### Native Splash Screen generation
+
++ `flutter pub run flutter_native_splash:create`
+
 ### Code analysis
 
 + `flutter analyze`

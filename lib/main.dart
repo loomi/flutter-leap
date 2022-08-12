@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'src/presentation/views/example_screen.dart';
+import 'package:loomi_flutter_boilerplate/src/presentation/views/splash/splash_screen.dart';
 import 'src/utils/custom_colors.dart';
 import 'src/utils/routes.dart';
 import 'src/utils/setups/setup_flavors.dart';
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: CustomColors.primary,
       ),
-      home: const ExampleScreen(),
+      home: const SplashScreen(),
       routes: routes,
     );
   }

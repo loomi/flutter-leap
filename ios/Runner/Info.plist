@@ -26,6 +26,12 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Used to allow the user to add images in some of the modules, through the image picker plugin</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Allows you to capture your best moment</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Used to allow the user to add images in some of the modules, through the image picker plugin</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UISupportedInterfaceOrientations</key>
