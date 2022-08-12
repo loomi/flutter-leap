@@ -11,6 +11,7 @@ class CustomTextFormField extends StatefulWidget {
   final String? initialValue;
   final int? maxLines;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final Color? backgroundColor;
   final TextStyle? labelStyle;
   final TextStyle? errorStyle;
@@ -33,7 +34,10 @@ class CustomTextFormField extends StatefulWidget {
   final double? borderRadius;
   final EdgeInsets? padding;
   final InputBorder? border;
+  final InputBorder? errorBorder;
+  final InputBorder? focusedErrorBorder;
   final Color? focusColor;
+  final bool? filled;
 
   const CustomTextFormField({
     Key? key,
@@ -66,6 +70,10 @@ class CustomTextFormField extends StatefulWidget {
     this.padding,
     this.border,
     this.focusColor,
+    this.filled = true,
+    this.errorBorder,
+    this.focusedErrorBorder,
+    this.prefixIcon,
   }) : super(key: key);
 
   @override
@@ -95,11 +103,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               ),
             ),
           Container(
-            padding: widget.padding ??
-                const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 4,
-                ),
+            padding: widget.padding ?? EdgeInsets.zero,
             child: Row(
               children: [
                 Expanded(
@@ -131,38 +135,57 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                               ))
                         : widget.textStyle,
                     decoration: InputDecoration(
+                      filled: widget.filled,
+                      fillColor: widget.backgroundColor ?? CustomColors.grey,
                       hintText: widget.hintText,
                       errorText: widget.errorText,
-                      border: widget.border ?? InputBorder.none,
-                      contentPadding: const EdgeInsets.all(8),
+                      focusedBorder: widget.focusedErrorBorder ??
+                          OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                                widget.borderRadius ?? 12),
+                            borderSide: const BorderSide(
+                              width: 2,
+                              color: Colors.blue,
+                            ),
+                          ),
+                      focusedErrorBorder: widget.errorBorder ??
+                          OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                                widget.borderRadius ?? 12),
+                            borderSide: const BorderSide(
+                              width: 2,
+                              color: Colors.red,
+                            ),
+                          ),
+                      border: OutlineInputBorder(
+                        borderRadius:
+                            BorderRadius.circular(widget.borderRadius ?? 12),
+                        borderSide: BorderSide.none,
+                      ),
                       focusColor: widget.focusColor,
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       hintStyle: widget.hintTextStyle,
                       errorStyle: widget.errorStyle,
+                      prefixIcon: widget.prefixIcon,
+                      suffixIcon: widget.isPassword
+                          ? GestureDetector(
+                              child: Icon(
+                                passwordIsVisible
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined,
+                                color: widget.iconColor,
+                              ),
+                              onTap: () {
+                                setState(() {
+                                  passwordIsVisible = !passwordIsVisible;
+                                });
+                              },
+                            )
+                          : widget.suffixIcon ?? const SizedBox.shrink(),
                     ),
                   ),
                 ),
-                if (widget.isPassword)
-                  IconButton(
-                    icon: Icon(
-                      passwordIsVisible
-                          ? Icons.visibility_outlined
-                          : Icons.visibility_off_outlined,
-                      color: widget.iconColor,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        passwordIsVisible = !passwordIsVisible;
-                      });
-                    },
-                  )
-                else if (widget.suffixIcon != null)
-                  widget.suffixIcon!,
               ],
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(widget.borderRadius ?? 5),
-              color: widget.backgroundColor ?? CustomColors.grey,
             ),
           ),
         ],
