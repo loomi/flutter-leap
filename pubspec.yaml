@@ -49,15 +49,19 @@ dev_dependencies:
   flutter_lints: ^1.0.0
   flutter_native_splash: 2.2.7
 
-# flutter_native_splash: 
-#   color: "#FFFFFF"
-#   image: "assets/images/<YOUR-SPLASH-IMAGE>.png"
-#   android: true
-#   ios: true
-#   android_gravity: fill
-#   ios_content_mode: scaleAspectFill
+flutter_native_splash: 
+  color: "#5b29c5"
+  image: "assets/images/splash.png"
+  android: true
+  ios: true
+  # android_gravity: fill
+  # ios_content_mode: scaleAspectFill
 
 
 flutter:
 
   uses-material-design: true
+  assets:
+      - assets/
+      - assets/images/
+      - assets/vectors/

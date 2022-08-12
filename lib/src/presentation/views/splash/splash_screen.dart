@@ -15,7 +15,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   removeNativeSplash() {
-    Future.delayed(const Duration(milliseconds: 1500)).then((value) {
+    Future.delayed(const Duration(milliseconds: 500)).then((value) {
       FlutterNativeSplash.remove();
     });
   }
