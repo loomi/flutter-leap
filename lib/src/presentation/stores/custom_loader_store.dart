@@ -25,7 +25,7 @@ abstract class _CustomLoaderStoreBase with Store {
       {required BuildContext context,
       String imagePath = "",
       String backgroundImagePath = "",
-      List<Color> backgroundGradient = const [],
+      List<Color> backgroundGradient = const [Colors.white, Colors.white],
       String text = "",
       required Function() loaderCallback}) async {
     this.imagePath = imagePath;

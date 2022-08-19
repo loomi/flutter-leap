@@ -11,7 +11,7 @@ import '../dio_config.dart';
 void setupGetIt() {
   //Stores
   GetIt.I.registerSingleton<ExampleStore>(ExampleStore());
-  GetIt.I.registerFactory<CustomLoaderStore>(() => CustomLoaderStore());
+  GetIt.I.registerSingleton<CustomLoaderStore>(CustomLoaderStore());
   //Datasources
   GetIt.I.registerSingleton<IExampleRepository>(
       ExampleDatasource(DioConfig().dio));

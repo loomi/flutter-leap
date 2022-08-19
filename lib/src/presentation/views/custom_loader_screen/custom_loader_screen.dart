@@ -71,7 +71,7 @@ class _CustomLoaderScreenState extends State<CustomLoaderScreen> {
                       const Text(
                         "Aguarde!",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.grey,
                           fontSize: 40,
                           fontWeight: FontWeight.w600,
                         ),
@@ -84,7 +84,7 @@ class _CustomLoaderScreenState extends State<CustomLoaderScreen> {
                           _customLoaderStore.text,
                           textAlign: TextAlign.center,
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: Colors.grey,
                             fontSize: 16,
                           ),
                         ),
@@ -93,7 +93,7 @@ class _CustomLoaderScreenState extends State<CustomLoaderScreen> {
                       ),
                       const CircularProgressIndicator.adaptive(
                         valueColor: AlwaysStoppedAnimation<Color>(
-                          Colors.white,
+                          Colors.grey,
                         ),
                       ),
                     ],
