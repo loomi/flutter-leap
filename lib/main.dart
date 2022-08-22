@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/views/splash/splash_screen.dart';
 import 'src/utils/custom_colors.dart';
@@ -11,6 +12,7 @@ void main() async {
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   SetupFlavors setupFlavors = SetupFlavors();
   await setupFlavors.setup();
+  await Firebase.initializeApp();
   setupGetIt();
   runApp(const MyApp());
 }

@@ -1,7 +1,7 @@
 name: loomi_flutter_boilerplate
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
 
@@ -18,7 +18,6 @@ dependencies:
   flutter_svg: ^1.1.1+1
   mask_text_input_formatter: 2.3.0
   cached_network_image: 3.2.0
-  
 
   ##  utils
   shared_preferences: 2.0.15
@@ -31,7 +30,13 @@ dependencies:
   get_it: 7.2.0
   image_picker: 0.8.5+3
   file_picker: 4.6.1
-  
+
+  ## for firebase
+  the_apple_sign_in: 1.1.1
+  firebase_auth: 3.3.8
+  firebase_database: 9.0.7
+  firebase_core: 1.12.0
+  google_sign_in: 5.1.0
 
   ##  for reactivity
   mobx: 2.0.7+4
@@ -47,21 +52,7 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^1.0.0
-  flutter_native_splash: 2.2.7
-
-flutter_native_splash: 
-  color: "#5b29c5"
-  image: "assets/images/splash.png"
-  android: true
-  ios: true
-  # android_gravity: fill
-  # ios_content_mode: scaleAspectFill
-
+  flutter_native_splash: ^2.2.3+1
 
 flutter:
-
   uses-material-design: true
-  assets:
-      - assets/
-      - assets/images/
-      - assets/vectors/

@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:loomi_flutter_boilerplate/src/presentation/stores/firebase_store.dart';
 
 import '../../domain/repositories/i_example_repository.dart';
 import '../../domain/usecases/get_example_uc.dart';
@@ -10,7 +11,7 @@ import '../dio_config.dart';
 void setupGetIt() {
   //Stores
   GetIt.I.registerSingleton<ExampleStore>(ExampleStore());
-
+  GetIt.I.registerSingleton<FirebaseStore>(FirebaseStore());
   //Datasources
   GetIt.I.registerSingleton<IExampleRepository>(
       ExampleDatasource(DioConfig().dio));
