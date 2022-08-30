@@ -34,10 +34,17 @@ class CustomTextFormField extends StatefulWidget {
   final double? borderRadius;
   final EdgeInsets? padding;
   final InputBorder? border;
+  final InputBorder? focusedBorder;
   final InputBorder? errorBorder;
   final InputBorder? focusedErrorBorder;
   final Color? focusColor;
   final bool? filled;
+  final Color? borderColor;
+  final Color? errorBorderColor;
+  final Color? focusedBorderColor;
+  final Color? focusedErrorBorderColor;
+  final bool inlineLabel;
+  final double borderWidth;
 
   const CustomTextFormField({
     Key? key,
@@ -70,10 +77,17 @@ class CustomTextFormField extends StatefulWidget {
     this.padding,
     this.border,
     this.focusColor,
-    this.filled = true,
+    this.filled,
     this.errorBorder,
     this.focusedErrorBorder,
     this.prefixIcon,
+    this.focusedBorder,
+    this.borderColor,
+    this.errorBorderColor,
+    this.focusedBorderColor,
+    this.focusedErrorBorderColor,
+    this.inlineLabel = false,
+    this.borderWidth = 2,
   }) : super(key: key);
 
   @override
@@ -94,7 +108,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (widget.labelText != null)
+          if (widget.labelText != null && !widget.inlineLabel)
             Padding(
               padding: const EdgeInsets.only(left: 12, bottom: 5),
               child: Text(
@@ -135,33 +149,49 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                               ))
                         : widget.textStyle,
                     decoration: InputDecoration(
+                      labelText: widget.inlineLabel ? widget.labelText : null,
+                      labelStyle: widget.inlineLabel ? widget.labelStyle : null,
                       filled: widget.filled,
                       fillColor: widget.backgroundColor ?? CustomColors.grey,
                       hintText: widget.hintText,
                       errorText: widget.errorText,
-                      focusedBorder: widget.focusedErrorBorder ??
+                      errorBorder: widget.errorBorder ??
                           OutlineInputBorder(
                             borderRadius: BorderRadius.circular(
                                 widget.borderRadius ?? 12),
-                            borderSide: const BorderSide(
-                              width: 2,
-                              color: Colors.blue,
+                            borderSide: BorderSide(
+                              width: widget.borderWidth,
+                              color: widget.errorBorderColor ?? Colors.red,
                             ),
                           ),
-                      focusedErrorBorder: widget.errorBorder ??
+                      focusedBorder: widget.focusedBorder ??
                           OutlineInputBorder(
                             borderRadius: BorderRadius.circular(
                                 widget.borderRadius ?? 12),
-                            borderSide: const BorderSide(
-                              width: 2,
-                              color: Colors.red,
+                            borderSide: BorderSide(
+                              width: widget.borderWidth,
+                              color: widget.focusedBorderColor ?? Colors.blue,
                             ),
                           ),
-                      border: OutlineInputBorder(
-                        borderRadius:
-                            BorderRadius.circular(widget.borderRadius ?? 12),
-                        borderSide: BorderSide.none,
-                      ),
+                      focusedErrorBorder: widget.focusedErrorBorder ??
+                          OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                                widget.borderRadius ?? 12),
+                            borderSide: BorderSide(
+                              width: widget.borderWidth,
+                              color:
+                                  widget.focusedErrorBorderColor ?? Colors.red,
+                            ),
+                          ),
+                      enabledBorder: widget.border ??
+                          OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(
+                                widget.borderRadius ?? 12),
+                            borderSide: BorderSide(
+                              width: widget.borderWidth,
+                              color: widget.borderColor ?? Colors.grey,
+                            ),
+                          ),
                       focusColor: widget.focusColor,
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       hintStyle: widget.hintTextStyle,
