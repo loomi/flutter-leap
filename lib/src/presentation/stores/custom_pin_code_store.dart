@@ -13,9 +13,6 @@ abstract class _CustomPinCodeStoreBase with Store {
   String title = "";
 
   @observable
-  String text = "";
-
-  @observable
   List<Color> bgGRadient = [];
 
   @observable
@@ -41,13 +38,11 @@ abstract class _CustomPinCodeStoreBase with Store {
     String title = "",
     String backgroundImagePath = "",
     List<Color> backgroundGradient = const [Colors.white, Colors.white],
-    String text = "",
     required int numberOfFields,
     required Function(dynamic value) confirmationCodeCallback,
     required Function() resendConfirmationCodeCallback,
     required Function() startScreenCodeCallback,
   }) async {
-    this.text = text;
     this.title = title;
     this.numberOfFields = numberOfFields;
     bgGRadient = backgroundGradient;
