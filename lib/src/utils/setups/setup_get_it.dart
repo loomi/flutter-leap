@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/stores/custom_loader_store.dart';
+import 'package:loomi_flutter_boilerplate/src/presentation/stores/custom_pin_code_store.dart';
 
 import '../../domain/repositories/i_example_repository.dart';
 import '../../domain/usecases/get_example_uc.dart';
@@ -12,6 +13,7 @@ void setupGetIt() {
   //Stores
   GetIt.I.registerSingleton<ExampleStore>(ExampleStore());
   GetIt.I.registerSingleton<CustomLoaderStore>(CustomLoaderStore());
+  GetIt.I.registerSingleton<CustomPinCodeStore>(CustomPinCodeStore());
   //Datasources
   GetIt.I.registerSingleton<IExampleRepository>(
       ExampleDatasource(DioConfig().dio));
