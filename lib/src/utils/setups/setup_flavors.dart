@@ -16,13 +16,14 @@ class SetupFlavors {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     if (kIsWeb) {
       baseUrl = "";
-    } else {}
-    if (packageInfo.packageName.contains("homolog")) {
-      baseUrl = "";
-    } else if (packageInfo.packageName.contains("staging")) {
-      baseUrl = "";
     } else {
-      baseUrl = "";
+      if (packageInfo.packageName.contains("homolog")) {
+        baseUrl = "";
+      } else if (packageInfo.packageName.contains("staging")) {
+        baseUrl = "";
+      } else {
+        baseUrl = "";
+      }
     }
   }
 }
