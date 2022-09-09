@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class SetupFlavors {
@@ -13,12 +14,16 @@ class SetupFlavors {
 
   Future<void> setup() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    if (packageInfo.packageName.contains("homolog")) {
-      baseUrl = "";
-    } else if (packageInfo.packageName.contains("staging")) {
+    if (kIsWeb) {
       baseUrl = "";
     } else {
-      baseUrl = "";
+      if (packageInfo.packageName.contains("homolog")) {
+        baseUrl = "";
+      } else if (packageInfo.packageName.contains("staging")) {
+        baseUrl = "";
+      } else {
+        baseUrl = "";
+      }
     }
   }
 }
