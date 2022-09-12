@@ -1,3 +1,4 @@
+import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/views/splash/splash_screen.dart';
 import 'src/utils/custom_colors.dart';
@@ -19,13 +20,24 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: CustomColors.primary,
+    return ConnectivityAppWrapper(
+      app: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primaryColor: CustomColors.primary,
+        ),
+        home: const SplashScreen(),
+        routes: routes,
+        builder: (buildContext, widget) {
+          return ConnectivityWidgetWrapper(
+            child: widget!,
+            disableInteraction: true,
+            message: "Sem conexão com a internet",
+            height: 60,
+            // offlineWidget: const OfflineScreen(),
+          );
+        },
       ),
-      home: const SplashScreen(),
-      routes: routes,
     );
   }
 }
