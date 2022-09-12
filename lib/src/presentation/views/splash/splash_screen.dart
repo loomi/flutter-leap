@@ -3,17 +3,18 @@ import 'package:loomi_flutter_boilerplate/src/presentation/views/example_screen.
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/custom_colors.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/fonts.dart';
+import 'package:loomi_flutter_boilerplate/src/utils/helpers/navigation_helper.dart';
 import '../../../utils/authentication.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
-  static String routeName = "/splash-screen";
+  static String routeName = "/";
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen> with NavigationService {
   removeNativeSplash() {
     Future.delayed(const Duration(milliseconds: 500)).then((value) {
       FlutterNativeSplash.remove();
@@ -26,16 +27,16 @@ class _SplashScreenState extends State<SplashScreen> {
       try {
         var authenticated = await Authentication.authenticated();
         if (authenticated) {
-          Navigator.pushNamed(context, ExampleScreen.routeName);
+          pushReplacementNamed(ExampleScreen.routeName);
           removeNativeSplash();
         } else {
-          //Navigator.pushNamed(context, <YOUR-AUTH-SCREEN>.routeName); //TODO
-          Navigator.pushNamed(context, ExampleScreen.routeName);
+          //pushReplacementNamed( <YOUR-AUTH-SCREEN>.routeName); //TODO
+          pushReplacementNamed(ExampleScreen.routeName);
           removeNativeSplash();
         }
       } catch (e) {
-        //Navigator.pushNamed(context, <YOUR-AUTH-SCREEN>.routeName); //TODO
-        Navigator.pushNamed(context, ExampleScreen.routeName);
+        //pushReplacementNamed( <YOUR-AUTH-SCREEN>.routeName); //TODO
+        pushReplacementNamed(ExampleScreen.routeName);
         removeNativeSplash();
       }
     });

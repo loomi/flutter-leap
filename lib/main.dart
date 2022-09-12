@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:loomi_flutter_boilerplate/src/presentation/views/splash/splash_screen.dart';
+import 'package:routemaster/routemaster.dart';
 import 'src/utils/custom_colors.dart';
 import 'src/utils/routes.dart';
 import 'src/utils/setups/setup_flavors.dart';
@@ -19,13 +19,13 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      title: 'Flutter Leap',
       theme: ThemeData(
         primaryColor: CustomColors.primary,
       ),
-      home: const SplashScreen(),
-      routes: routes,
+      routerDelegate: routemaster,
+      routeInformationParser: const RoutemasterParser(),
     );
   }
 }

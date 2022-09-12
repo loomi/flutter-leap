@@ -19,7 +19,6 @@ dependencies:
   mask_text_input_formatter: 2.3.0
   cached_network_image: 3.2.0
   
-
   ##  utils
   shared_preferences: 2.0.15
   retrofit: 3.0.1+1
@@ -31,8 +30,8 @@ dependencies:
   get_it: 7.2.0
   image_picker: 0.8.5+3
   file_picker: 4.6.1
+  routemaster: 1.0.1
   
-
   ##  for reactivity
   mobx: 2.0.7+4
   flutter_mobx: 2.0.6+1
@@ -56,10 +55,9 @@ flutter_native_splash:
   ios: true
   # android_gravity: fill
   # ios_content_mode: scaleAspectFill
-
+  
 
 flutter:
-
   uses-material-design: true
   assets:
       - assets/

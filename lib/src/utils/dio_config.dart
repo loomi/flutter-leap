@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:loomi_flutter_boilerplate/src/presentation/views/splash/splash_screen.dart';
+import 'package:loomi_flutter_boilerplate/src/utils/helpers/navigation_helper.dart';
 
 import 'authentication.dart';
 import 'setups/setup_flavors.dart';
@@ -29,7 +31,7 @@ class DioConfig {
   }
 }
 
-class CustomInterceptors extends InterceptorsWrapper {
+class CustomInterceptors extends InterceptorsWrapper with NavigationService {
   @override
   Future onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
@@ -40,5 +42,16 @@ class CustomInterceptors extends InterceptorsWrapper {
     }
     options.headers["Accept"] = "application/json";
     return super.onRequest(options, handler);
+  }
+
+  @override
+  Future onError(DioError err, ErrorInterceptorHandler handler) async {
+    if (err.response != null) {
+      if (err.response!.statusCode == 401) {
+        Authentication.logout();
+        pushReplacementNamed(SplashScreen.routeName);
+      }
+    }
+    handler.next(err);
   }
 }
