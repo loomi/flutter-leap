@@ -25,6 +25,10 @@
 
 ### Icons generation
 
++ `Go to pubspec file and add the path of your icon on 'flutter_icon'`
+
++ `The icon should be 512x512 or 1024x1024`
+
 + `flutter pub run flutter_launcher_icons:main`
 
 ### Native Splash Screen generation
