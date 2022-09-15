@@ -18,7 +18,7 @@ class _CustomPinScreenState extends State<CustomPinScreen> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController codeController = TextEditingController();
   Timer? _timer;
-  int _start = 60;
+  int _start=0;
   final _pinCodeStore = GetIt.I.get<CustomPinCodeStore>();
   final _controller = ScrollController();
 
@@ -46,6 +46,7 @@ class _CustomPinScreenState extends State<CustomPinScreen> {
 
   @override
   void initState() {
+    _start=_pinCodeStore.resendTime;
     startTimer();
     _pinCodeStore.startScreenCodeCallback();
     super.initState();
