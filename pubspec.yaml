@@ -18,7 +18,7 @@ dependencies:
   flutter_svg: ^1.1.1+1
   mask_text_input_formatter: 2.3.0
   cached_network_image: 3.2.0
-  
+
 
   ##  utils
   shared_preferences: 2.0.15

@@ -7,6 +7,7 @@ import 'package:loomi_flutter_boilerplate/src/presentation/stores/custom_pin_cod
 
 class CustomPinScreen extends StatefulWidget {
   static String routeName = "/custom_pin_screen";
+
   const CustomPinScreen({Key? key}) : super(key: key);
 
   @override
@@ -19,6 +20,7 @@ class _CustomPinScreenState extends State<CustomPinScreen> {
   Timer? _timer;
   int _start = 60;
   final _pinCodeStore = GetIt.I.get<CustomPinCodeStore>();
+  final _controller = ScrollController();
 
   void startTimer() {
     const oneSec = Duration(seconds: 1);
@@ -49,7 +51,16 @@ class _CustomPinScreenState extends State<CustomPinScreen> {
     super.initState();
   }
 
+  void _animateToIndex(int index) {
+    _controller.animateTo(
+      index * 60,
+      duration: Duration(seconds: 2),
+      curve: Curves.fastOutSlowIn,
+    );
+  }
+
   FocusNode focusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -122,8 +133,13 @@ class _CustomPinScreenState extends State<CustomPinScreen> {
                               Observer(builder: (context) {
                                 return Container(
                                   margin: const EdgeInsets.only(top: 24),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 14),
                                   child: SingleChildScrollView(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
                                     scrollDirection: Axis.horizontal,
+                                    controller: _controller,
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -138,6 +154,8 @@ class _CustomPinScreenState extends State<CustomPinScreen> {
                                             onChanged: (value) async {
                                               await _pinCodeStore
                                                   .setCode(value);
+                                              _animateToIndex(
+                                                  _pinCodeStore.code.length);
                                               if (_pinCodeStore.code.length >=
                                                   _pinCodeStore
                                                       .numberOfFields) {

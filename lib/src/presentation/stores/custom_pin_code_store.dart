@@ -19,6 +19,12 @@ abstract class _CustomPinCodeStoreBase with Store {
   bool loading = false;
 
   @observable
+  int resendTime = 0;
+
+  @action
+  updateResendTime(int value) => resendTime = value;
+
+  @observable
   int numberOfFields = 0;
   Function(dynamic value) confirmationCodeCallback = (dynamic value) {};
   Function() resendCodeButtonCallback = () {};
@@ -36,14 +42,15 @@ abstract class _CustomPinCodeStoreBase with Store {
   Future pushToCustomPinCodeScreen({
     required BuildContext context,
     String title = "",
-    String backgroundImagePath = "",
     List<Color> backgroundGradient = const [Colors.white, Colors.white],
+    int resendTime = 60,
     required int numberOfFields,
     required Function(dynamic value) confirmationCodeCallback,
     required Function() resendConfirmationCodeCallback,
     required Function() startScreenCodeCallback,
   }) async {
     this.title = title;
+    this.resendTime = resendTime;
     this.numberOfFields = numberOfFields;
     bgGRadient = backgroundGradient;
     this.confirmationCodeCallback = confirmationCodeCallback;
