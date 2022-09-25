@@ -1,6 +1,3 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/stores/custom_loader_store.dart';

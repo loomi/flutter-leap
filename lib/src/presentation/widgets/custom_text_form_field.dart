@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/custom_colors.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/fonts.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final String? hintText;
