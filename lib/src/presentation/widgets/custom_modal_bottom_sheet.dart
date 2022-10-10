@@ -12,7 +12,7 @@ Future<bool?> showCustomModalBottomSheet(
   Color backgroundColor = Colors.white,
 }) async {
   try {
-    if (!kIsWeb) {
+    if (kIsWeb) {
       await showDialog(
         context: context,
         builder: (context) {
