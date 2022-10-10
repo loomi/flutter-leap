@@ -8,6 +8,6 @@ void printException(String identifier, e, s) {
     log(e.response.toString());
     log(e.error);
   }
-  log(e);
-  log(s);
+  log(e.toString());
+  log(s.toString());
 }

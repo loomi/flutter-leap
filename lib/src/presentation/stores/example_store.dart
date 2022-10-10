@@ -1,5 +1,4 @@
 import 'package:get_it/get_it.dart';
-import 'package:loomi_flutter_boilerplate/src/external/models/paginated_response.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/usecases/i_get_paginated_example_uc.dart';
 import 'package:mobx/mobx.dart';
 
@@ -36,8 +35,6 @@ abstract class _ExampleStore with Store {
   }) async {
     if (!loading && !loadingMore && hasNextPage) {
       try {
-        lastLoadedPage = page;
-
         if (page == 0) {
           paginatedList.clear();
           loading = true;
@@ -45,18 +42,21 @@ abstract class _ExampleStore with Store {
           loadingMore = true;
         }
 
-        var response = await GetIt.I.get<IGetPaginatedExampleUC>()(
-          page: lastLoadedPage,
+        var response = await GetIt.I.get<IGetPaginationExampleUC>()(
+          page: page,
         );
+
         paginatedList.addAll(response?.data ?? []);
 
         if (response?.totalPages != null) {
-          if (response!.totalPages! > lastLoadedPage) {
+          if (response!.totalPages! > lastLoadedPage + 1) {
             hasNextPage = true;
           } else {
             hasNextPage = false;
           }
         }
+
+        lastLoadedPage = page;
       } catch (e, s) {
         printException("ExampleStore.getPaginatedData", e, s);
       } finally {
