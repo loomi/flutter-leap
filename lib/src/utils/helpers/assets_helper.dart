@@ -1,12 +1,10 @@
-class AssetsHelper {
-  static const assetsUrlPrefixImages = "assets/images/";
-  static const assetsUrlPrefixVectors = "assets/vectors/";
+const assetsUrlPrefixImages = "assets/images/";
+const assetsUrlPrefixVectors = "assets/vectors/";
 
-  String getAssetImageUrl(String image) {
-    return assetsUrlPrefixImages + image;
-  }
+String getAssetImageUrl(String image) {
+  return assetsUrlPrefixImages + image;
+}
 
-  String getAssetVectorUrl(String vector) {
-    return assetsUrlPrefixVectors + vector;
-  }
+String getAssetVectorUrl(String vector) {
+  return assetsUrlPrefixVectors + vector;
 }
