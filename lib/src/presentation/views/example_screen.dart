@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/widgets/custom_button.dart';
+import 'package:loomi_flutter_boilerplate/src/presentation/widgets/search_bar_component.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/custom_colors.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/helpers/image_picker_helper.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/helpers/scroll_listener_helper.dart';
@@ -21,7 +24,9 @@ class ExampleScreen extends StatefulWidget {
 
 class _ExampleScreenState extends State<ExampleScreen> {
   final exampleStore = GetIt.I.get<ExampleStore>();
+
   final ScrollController controller = ScrollController();
+
   @override
   void initState() {
     exampleStore.getPaginatedData();
@@ -74,6 +79,15 @@ class _ExampleScreenState extends State<ExampleScreen> {
                           },
                           text: "Pegar imagem",
                           textColor: CustomColors.white,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(25),
+                        child: SearchBarComponent(
+                          hintText: "Pesquisar",
+                          onChanged: (value) {
+                            log("O valor só chegou agora: $value");
+                          },
                         ),
                       ),
                       ListView.builder(

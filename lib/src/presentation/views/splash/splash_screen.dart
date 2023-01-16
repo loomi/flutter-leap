@@ -24,11 +24,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    NotificationService().setup().then((value) {
-      FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-        firebaseCloudMessagingListeners();
-      });
-    });
+    // NotificationService().setup().then((value) {
+    //   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    //     firebaseCloudMessagingListeners();
+    //   });
+    // });
     super.initState();
   }
 
