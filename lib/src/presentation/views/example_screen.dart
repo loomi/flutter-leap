@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:loomi_flutter_boilerplate/src/presentation/widgets/custom_button.dart';
+import 'package:loomi_flutter_boilerplate/src/utils/custom_colors.dart';
+import 'package:loomi_flutter_boilerplate/src/utils/helpers/image_picker_helper.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/helpers/scroll_listener_helper.dart';
+import 'package:loomi_flutter_boilerplate/src/utils/helpers/select_pictures_sheet_helper.dart';
 
 import '../stores/example_store.dart';
 
@@ -33,41 +38,67 @@ class _ExampleScreenState extends State<ExampleScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Observer(builder: (context) {
-      return Scaffold(
-        appBar: AppBar(
-          title: const Text("Example title"),
-        ),
-        body: exampleStore.loading
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
-            : SingleChildScrollView(
-                controller: controller,
-                child: Column(
-                  children: [
-                    ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: exampleStore.paginatedList.length,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, i) {
-                        return PaginatedItem(
-                          item: exampleStore.paginatedList[i],
-                        );
-                      },
-                    ),
-                    if (exampleStore.loadingMore)
-                      const Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Center(
-                          child: CircularProgressIndicator(),
+    return Observer(
+      builder: (context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text("Example title"),
+          ),
+          body: exampleStore.loading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : SingleChildScrollView(
+                  controller: controller,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CustomButton(
+                          backgroundColor: CustomColors.black,
+                          expanded: true,
+                          onTap: () {
+                            openSelectPictureSheet(
+                              context,
+                              getImageCamera: () {
+                                getImageHelper(
+                                  source: ImageSource.camera,
+                                );
+                              },
+                              getImageGallery: () {
+                                getImageHelper(
+                                  source: ImageSource.gallery,
+                                );
+                              },
+                            );
+                          },
+                          text: "Pegar imagem",
+                          textColor: CustomColors.white,
                         ),
-                      )
-                  ],
+                      ),
+                      ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: exampleStore.paginatedList.length,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, i) {
+                          return PaginatedItem(
+                            item: exampleStore.paginatedList[i],
+                          );
+                        },
+                      ),
+                      if (exampleStore.loadingMore)
+                        const Padding(
+                          padding: EdgeInsets.all(10),
+                          child: Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        )
+                    ],
+                  ),
                 ),
-              ),
-      );
-    });
+        );
+      },
+    );
   }
 }
 

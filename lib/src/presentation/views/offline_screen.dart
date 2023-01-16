@@ -23,7 +23,7 @@ class _OfflineScreenState extends State<OfflineScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
-              AssetsHelper().getAssetImageUrl(
+              getAssetImageUrl(
                 'wifi.png',
               ),
             ),
