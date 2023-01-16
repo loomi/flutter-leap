@@ -47,7 +47,6 @@ final routes = RouteMap(
 //        ),
 
 // Example: Page with Path Params
-// Example: Page with Query Params
 // ExampleWithParam.routeName: (route) => MaterialPage(
 //          child: ExampleWithParam(
 //            id: route.pathParameters['id'] ?? "0",
