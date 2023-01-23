@@ -1,10 +1,8 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/views/example_screen.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/custom_colors.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/fonts.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/services/notifications_services.dart';
 import '../../../utils/authentication.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -20,16 +18,6 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(milliseconds: 500)).then((value) {
       FlutterNativeSplash.remove();
     });
-  }
-
-  @override
-  void initState() {
-    // NotificationService().setup().then((value) {
-    //   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    //     firebaseCloudMessagingListeners();
-    //   });
-    // });
-    super.initState();
   }
 
   @override
@@ -74,11 +62,19 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  void firebaseCloudMessagingListeners() async {
-    NotificationService.onMessage.listen(
-      (RemoteMessage? message) {
-        NotificationService().invokeLocalNotification(message!);
-      },
-    );
-  }
+  // ADD THIS WHEN ADDING FIREBASE MESSAGING, IF NOT, REMOVE IT
+
+  // NotificationService().setup().then((value) {
+  //   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+  //     firebaseCloudMessagingListeners();
+  //   });
+  // });
+
+  // void firebaseCloudMessagingListeners() async {
+  //   NotificationService.onMessage.listen(
+  //     (RemoteMessage? message) {
+  //       NotificationService().invokeLocalNotification(message!);
+  //     },
+  //   );
+  // }
 }
