@@ -8,11 +8,6 @@ void listenToScrollController({
     if (scrollController.position.pixels ==
         scrollController.position.maxScrollExtent) {
       await onLoad();
-      scrollController.animateTo(
-        scrollController.position.pixels + 150,
-        curve: Curves.linear,
-        duration: const Duration(milliseconds: 300),
-      );
     }
   });
 }
