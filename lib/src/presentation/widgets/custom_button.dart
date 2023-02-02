@@ -1,36 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:loomi_flutter_boilerplate/src/utils/custom_colors.dart';
+import 'package:loomi_flutter_boilerplate/src/utils/fonts.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
     Key? key,
-    required this.backgroundColor,
+    this.backgroundColor,
     this.margin,
     this.padding,
-    required this.onTap,
     this.borderColor,
     this.borderThickness,
     this.expanded = false,
     this.borderRadius,
-    required this.text,
     this.textStyle,
-    required this.textColor,
+    this.textColor,
     this.leading,
     this.trailing,
+    required this.text,
+    required this.onTap,
   }) : super(key: key);
 
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final String text;
   final TextStyle? textStyle;
-  final Color textColor;
+  final Color? textColor;
   final Widget? leading;
   final Widget? trailing;
   final EdgeInsets? margin;
   final EdgeInsets? padding;
-  final Function() onTap;
   final Color? borderColor;
   final double? borderThickness;
   final bool expanded;
   final double? borderRadius;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -38,13 +40,14 @@ class CustomButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: backgroundColor,
-          borderRadius: BorderRadius.circular(borderRadius ?? 5),
+          color: backgroundColor ?? CustomColors.black,
+          borderRadius: BorderRadius.circular(borderRadius ?? 32),
           border: Border.all(
-              color: borderColor ?? Colors.transparent,
-              width: borderThickness ?? 0.0),
+            color: borderColor ?? Colors.transparent,
+            width: borderThickness ?? 0.0,
+          ),
         ),
-        padding: padding ?? const EdgeInsets.all(10),
+        padding: padding ?? const EdgeInsets.symmetric(vertical: 25),
         margin: margin ?? EdgeInsets.zero,
         child: Row(
           mainAxisSize: expanded ? MainAxisSize.max : MainAxisSize.min,
@@ -55,7 +58,10 @@ class CustomButton extends StatelessWidget {
               child: Text(
                 text,
                 textAlign: TextAlign.center,
-                style: textStyle ?? TextStyle(color: textColor),
+                style: textStyle ??
+                    Fonts.headline5.copyWith(
+                      color: textColor ?? CustomColors.white,
+                    ),
               ),
             ),
             if (trailing != null) trailing!
