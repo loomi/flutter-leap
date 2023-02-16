@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/usecases/i_get_paginated_example_uc.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/app_state.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../external/models/example.dart';
@@ -16,7 +15,7 @@ abstract class _ExampleStore with Store {
   Example? example;
 
   @observable
-  AppState appState = AppState.success;
+  bool loading = false;
 
   @observable
   bool loadingMore = false;
@@ -34,11 +33,11 @@ abstract class _ExampleStore with Store {
   Future<void> getPaginatedData({
     int page = 0,
   }) async {
-    if (appState != AppState.loading && !loadingMore && hasNextPage) {
+    if (!loading && !loadingMore && hasNextPage) {
       try {
         if (page == 0) {
           paginatedList.clear();
-          appState = AppState.loading;
+          loading = true;
         } else {
           loadingMore = true;
         }
@@ -62,7 +61,7 @@ abstract class _ExampleStore with Store {
         printException("ExampleStore.getPaginatedData", e, s);
       } finally {
         if (page == 0) {
-          appState = AppState.loaded;
+          loading = false;
         } else {
           loadingMore = false;
         }
@@ -73,13 +72,12 @@ abstract class _ExampleStore with Store {
   @action
   Future<void> getExample() async {
     try {
-      appState = AppState.loading;
+      loading = true;
       example = await GetIt.I.get<IGetExampleUseCase>()();
     } catch (e, s) {
-      appState == AppState.error;
       printException("ExampleStore.getExample", e, s);
     } finally {
-      appState == AppState.loaded;
+      loading = false;
     }
   }
 }

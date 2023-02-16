@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/widgets/custom_button.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/widgets/search_bar_component.dart';
+import 'package:loomi_flutter_boilerplate/src/utils/app_state.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/custom_colors.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/helpers/image_picker_helper.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/helpers/scroll_listener_helper.dart';
@@ -48,7 +49,7 @@ class _ExampleScreenState extends State<ExampleScreen> {
           appBar: AppBar(
             title: const Text("Example title"),
           ),
-          body: exampleStore.loading
+          body: exampleStore.appState == AppState.loading
               ? const Center(
                   child: CircularProgressIndicator(),
                 )
