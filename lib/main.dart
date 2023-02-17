@@ -1,6 +1,7 @@
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/views/splash/splash_screen.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'src/utils/custom_colors.dart';
 import 'src/utils/routes.dart';
 import 'src/utils/setups/setup_flavors.dart';
@@ -13,11 +14,18 @@ void main() async {
   SetupFlavors setupFlavors = SetupFlavors();
   await setupFlavors.setup();
   setupGetIt();
-  runApp(const MyApp());
+  await SentryFlutter.init(
+    (options) {
+      options.dsn = 'https://example@sentry.io/add-your-dsn-here';
+    },
+    // Init your App.
+    appRunner: () => runApp(const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ConnectivityAppWrapper(
