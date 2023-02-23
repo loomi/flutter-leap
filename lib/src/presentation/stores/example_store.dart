@@ -19,9 +19,6 @@ abstract class _ExampleStore with Store {
   AppState appState = AppState.success;
 
   @observable
-  bool loadingMore = false;
-
-  @observable
   ObservableList<String> paginatedList = ObservableList();
 
   @observable
@@ -34,13 +31,16 @@ abstract class _ExampleStore with Store {
   Future<void> getPaginatedData({
     int page = 0,
   }) async {
-    if (appState != AppState.loading && !loadingMore && hasNextPage) {
+    print(appState);
+    if (appState != AppState.loading &&
+        appState != AppState.loadMore &&
+        hasNextPage) {
       try {
         if (page == 0) {
           paginatedList.clear();
           appState = AppState.loading;
         } else {
-          loadingMore = true;
+          appState = AppState.loadMore;
         }
 
         var response = await GetIt.I.get<IGetPaginationExampleUC>()(
@@ -50,7 +50,7 @@ abstract class _ExampleStore with Store {
         paginatedList.addAll(response?.data ?? []);
 
         if (response?.totalPages != null) {
-          if (response!.totalPages! > lastLoadedPage + 1) {
+          if (response!.totalPages! > lastLoadedPage ) {
             hasNextPage = true;
           } else {
             hasNextPage = false;
@@ -61,11 +61,9 @@ abstract class _ExampleStore with Store {
       } catch (e, s) {
         printException("ExampleStore.getPaginatedData", e, s);
       } finally {
-        if (page == 0) {
-          appState = AppState.loaded;
-        } else {
-          loadingMore = false;
-        }
+        
+          appState = AppState.success;
+        
       }
     }
   }
