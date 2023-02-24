@@ -6,9 +6,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/widgets/custom_button.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/widgets/search_bar_component.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/custom_colors.dart';
+import 'package:loomi_flutter_boilerplate/src/utils/helpers/custom_error_helper.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/helpers/image_picker_helper.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/helpers/scroll_listener_helper.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/helpers/select_pictures_sheet_helper.dart';
+import 'package:loomi_flutter_boilerplate/src/utils/helpers/show_confirmation_dialog_helper.dart';
 
 import '../stores/example_store.dart';
 
@@ -86,6 +88,32 @@ class _ExampleScreenState extends State<ExampleScreen> {
                           hintText: "Pesquisar",
                           onChanged: (value) {
                             log("O valor só chegou agora: $value");
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CustomButton(
+                          text: "showDialogHelper",
+                          expanded: true,
+                          onTap: () {
+                            showConfirmationDialogHelper(
+                              context: context,
+                              confirmButtonText: "Confirmar",
+                              title: "Aqui você insere o título",
+                              body:
+                                  "E aqui o contéudo todo e aqui o contéudo todo e aqui o contéudo todo e aqui o contéudo todo e aqui o contéudo todo",
+                            );
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CustomButton(
+                          text: "customErrorHelper",
+                          expanded: true,
+                          onTap: () {
+                            customErrorHelper(context, e: Exception("erro"));
                           },
                         ),
                       ),

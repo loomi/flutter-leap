@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/widgets/custom_button.dart';
-import '../../utils/custom_colors.dart';
-import '../../utils/fonts.dart';
-import 'custom_modal_bottom_sheet.dart';
+import '../custom_colors.dart';
+import '../fonts.dart';
+import '../../presentation/widgets/custom_modal_bottom_sheet.dart';
 
 void showConfirmationDialogHelper({
   required BuildContext context,
@@ -99,7 +99,7 @@ void showConfirmationDialogHelper({
               children: [
                 Expanded(
                   child: CustomButton(
-                    text: "Ok",
+                    text: confirmButtonText ?? "Ok",
                     backgroundColor: CustomColors.black,
                     textColor: CustomColors.white,
                     onTap: () {
