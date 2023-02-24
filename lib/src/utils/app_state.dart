@@ -1,8 +1,8 @@
 enum AppState{
-  empty,
+empty,
 loading,
 loaded,
 error, 
 success,
-loadMore
+loadingMore
 }

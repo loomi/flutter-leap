@@ -100,7 +100,7 @@ class _ExampleScreenState extends State<ExampleScreen> {
                           );
                         },
                       ),
-                      if (exampleStore.appState == AppState.loadMore)
+                      if (exampleStore.appState == AppState.loadingMore)
                         const Padding(
                           padding: EdgeInsets.all(10),
                           child: Center(

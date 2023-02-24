@@ -27,20 +27,24 @@ abstract class _ExampleStore with Store {
   @observable
   bool hasNextPage = true;
 
+  @action
+  void changeAppState(AppState state) {
+    appState = state;
+  }
+
   @observable
   Future<void> getPaginatedData({
     int page = 0,
   }) async {
-    print(appState);
     if (appState != AppState.loading &&
-        appState != AppState.loadMore &&
+        appState != AppState.loadingMore &&
         hasNextPage) {
       try {
         if (page == 0) {
           paginatedList.clear();
-          appState = AppState.loading;
+          changeAppState(AppState.loading);
         } else {
-          appState = AppState.loadMore;
+          changeAppState(AppState.loadingMore);
         }
 
         var response = await GetIt.I.get<IGetPaginationExampleUC>()(
@@ -50,7 +54,7 @@ abstract class _ExampleStore with Store {
         paginatedList.addAll(response?.data ?? []);
 
         if (response?.totalPages != null) {
-          if (response!.totalPages! > lastLoadedPage ) {
+          if (response!.totalPages! > lastLoadedPage) {
             hasNextPage = true;
           } else {
             hasNextPage = false;
@@ -61,9 +65,7 @@ abstract class _ExampleStore with Store {
       } catch (e, s) {
         printException("ExampleStore.getPaginatedData", e, s);
       } finally {
-        
-          appState = AppState.success;
-        
+        changeAppState(AppState.success);
       }
     }
   }
@@ -74,10 +76,10 @@ abstract class _ExampleStore with Store {
       appState = AppState.loading;
       example = await GetIt.I.get<IGetExampleUseCase>()();
     } catch (e, s) {
-      appState == AppState.error;
+      changeAppState(AppState.error);
       printException("ExampleStore.getExample", e, s);
     } finally {
-      appState == AppState.loaded;
+      changeAppState(AppState.loaded);
     }
   }
 }
