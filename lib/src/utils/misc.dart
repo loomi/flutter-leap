@@ -6,7 +6,7 @@ void printException(String identifier, e, s) {
   if (e is DioError) {
     log("${e.requestOptions.baseUrl}${e.requestOptions.path}");
     log(e.response.toString());
-    log(e.error);
+    log(e.error.toString());
   }
   log(e.toString());
   log(s.toString());

@@ -22,8 +22,8 @@ class DioConfig {
 
   get dio {
     _dio.options.baseUrl = _baseUrl;
-    _dio.options.connectTimeout = 50000; //5s
-    _dio.options.receiveTimeout = 30000;
+    _dio.options.connectTimeout = const Duration(seconds: 30);
+    _dio.options.receiveTimeout = const Duration(seconds: 30);
     _dio.interceptors.add(CustomInterceptors());
     return _dio;
   }

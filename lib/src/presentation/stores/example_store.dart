@@ -32,6 +32,14 @@ abstract class _ExampleStore with Store {
     appState = state;
   }
 
+  @action
+  testState() async {
+    appState = AppState.loading;
+    await Future.delayed(const Duration(seconds: 3));
+    appState = AppState.loaded;
+    appState = AppState.success;
+  }
+
   @observable
   Future<void> getPaginatedData({
     int page = 0,
