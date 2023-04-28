@@ -39,14 +39,6 @@ class Authentication {
     return _decrypt(encryptedToken);
   }
 
-  static String _encrypt(String value) {
-    final key = Key.fromUtf8(_encryptionKey);
-    final iv = IV.fromUtf8(_iv);
-    final encrypter = Encrypter(AES(key, mode: AESMode.cbc));
-    final encrypted = encrypter.encrypt(value, iv: iv);
-    return base64.encode(encrypted.bytes);
-  }
-
   static String _decrypt(String encrypted) {
     final key = Key.fromUtf8(_encryptionKey);
     final iv = IV.fromUtf8(_iv);
@@ -54,5 +46,13 @@ class Authentication {
     final decrypted =
         encrypter.decrypt(Encrypted.fromBase64(encrypted), iv: iv);
     return decrypted;
+  }
+
+  static String _encrypt(String value) {
+    final key = Key.fromUtf8(_encryptionKey);
+    final iv = IV.fromUtf8(_iv);
+    final encrypter = Encrypter(AES(key, mode: AESMode.cbc));
+    final encrypted = encrypter.encrypt(value, iv: iv);
+    return base64.encode(encrypted.bytes);
   }
 }
