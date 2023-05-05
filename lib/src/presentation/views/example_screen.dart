@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/widgets/custom_button.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/widgets/search_bar_component.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/app_state.dart';
+import 'package:loomi_flutter_boilerplate/src/utils/authentication.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/custom_colors.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/helpers/custom_error_helper.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/helpers/image_picker_helper.dart';
@@ -59,6 +60,49 @@ class _ExampleScreenState extends State<ExampleScreen> {
                   controller: controller,
                   child: Column(
                     children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CustomButton(
+                          text: "Salvar Token",
+                          expanded: true,
+                          onTap: () {
+                            Authentication.saveToken("meu token aqui hehe");
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CustomButton(
+                          text: "Buscar Token",
+                          expanded: true,
+                          onTap: () async {
+                            log(await Authentication.getToken() ??
+                                "Token null");
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CustomButton(
+                          text: "Excluir Token",
+                          expanded: true,
+                          onTap: () {
+                            Authentication.logout();
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CustomButton(
+                          text: "Possui Token?",
+                          expanded: true,
+                          onTap: () async {
+                            log(
+                              (await Authentication.authenticated()).toString(),
+                            );
+                          },
+                        ),
+                      ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: CustomButton(

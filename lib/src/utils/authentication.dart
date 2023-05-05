@@ -6,8 +6,8 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 class Authentication {
   static const _storage = FlutterSecureStorage();
   static const _tokenKey = "authentication_token";
-  static const _encryptionKey = "aBcDeFgHiJkLmNoP";
-  static const _iv = "1#kl8Y@&FvT2Gh9M!aWj6";
+  static const _encryptionKey = "TzH0WIcvs5qyBQVA"; //secure-random -l 16
+  static const _iv = "7goJ/fGEQuCP6a14"; //secure-random -l 16
 
   static Future<bool> authenticated() async {
     final token = await _getToken();
