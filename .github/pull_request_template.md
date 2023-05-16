@@ -1,11 +1,11 @@
-_Changes:_
+**Changes:**
 
-_1. What i did:_
+**1. What i did:**
 
 - Completed the [task](link_to_task)
 - Changed something in the app
 
-_2. What to test:_
+**2. What to test:**
 
 - [ ] Layout on different devices ([mockup](link_to_mockup))
 - [ ] Happy path
@@ -13,30 +13,30 @@ _2. What to test:_
 
 ---
 
-_How to get there_
+**How to get there**
 
-_1. Flavor and login informations_
+**1. Flavor and login informations**
 
-> _flavor_: staging
+> **flavor**: staging
 >
-> _login_: loomi
+> **login**: loomi
 >
-> _password_: 12345678
+> **password**: 12345678
 
-_2. Steps_
+**2. Steps**
 
 - Do login
 - Go to some app page
 
 ---
 
-_Observations:_
+**Observations:**
 
-_1. Known issues_
+**1. Known issues**
 
 - Put them here if there are any
 
-_2. Code review pratices_
+**2. Code review pratices**
 
 - Unecessary prints/log (ctrl+f -> [ print( ] )
 - Unecessary comments (ctrl+f -> [ // ] )
