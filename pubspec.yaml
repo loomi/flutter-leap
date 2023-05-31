@@ -52,7 +52,7 @@ dependencies:
   loomi_ui_flutter:
     git:
       url: https://github.com/loomi/loomi-ui-flutter.git
-      ref: fix/icons
+      ref: master
     
 dev_dependencies:
   flutter_test:
