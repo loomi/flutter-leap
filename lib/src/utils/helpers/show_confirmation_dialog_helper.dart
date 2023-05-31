@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:loomi_flutter_boilerplate/src/presentation/widgets/custom_button.dart';
+import 'package:loomi_ui_flutter/widgets/custom_button.dart';
 import '../custom_colors.dart';
 import '../fonts.dart';
 import '../../presentation/widgets/custom_modal_bottom_sheet.dart';
@@ -53,7 +53,10 @@ void showConfirmationDialogHelper({
                         },
                         expanded: true,
                         backgroundColor: CustomColors.black,
-                        textColor: CustomColors.white,
+                        buttonTextStyle:
+                            Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                  color: CustomColors.white,
+                                ),
                       ),
                     ),
                     const SizedBox(
@@ -101,7 +104,10 @@ void showConfirmationDialogHelper({
                   child: CustomButton(
                     text: confirmButtonText ?? "Ok",
                     backgroundColor: CustomColors.black,
-                    textColor: CustomColors.white,
+                    buttonTextStyle:
+                        Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              color: CustomColors.white,
+                            ),
                     onTap: () {
                       Navigator.of(context).pop();
                     },
