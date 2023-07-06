@@ -2,12 +2,11 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:encrypt/encrypt.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:loomi_flutter_boilerplate/src/utils/environments.dart';
 
 class Authentication {
   static const _storage = FlutterSecureStorage();
   static const _tokenKey = "authentication_token";
-  static const _encryptionKey = "TzH0WIcvs5qyBQVA"; //secure-random -l 16
-  static const _iv = "7goJ/fGEQuCP6a14"; //secure-random -l 16
 
   static Future<bool> authenticated() async {
     final token = await _getToken();
@@ -40,8 +39,8 @@ class Authentication {
   }
 
   static String _decrypt(String encrypted) {
-    final key = Key.fromUtf8(_encryptionKey);
-    final iv = IV.fromUtf8(_iv);
+    final key = Key.fromUtf8(Environments.authenticationEncryptionKey);
+    final iv = IV.fromUtf8(Environments.authenticationIvKey);
     final encrypter = Encrypter(AES(key, mode: AESMode.cbc));
     final decrypted =
         encrypter.decrypt(Encrypted.fromBase64(encrypted), iv: iv);
@@ -49,8 +48,8 @@ class Authentication {
   }
 
   static String _encrypt(String value) {
-    final key = Key.fromUtf8(_encryptionKey);
-    final iv = IV.fromUtf8(_iv);
+    final key = Key.fromUtf8(Environments.authenticationEncryptionKey);
+    final iv = IV.fromUtf8(Environments.authenticationIvKey);
     final encrypter = Encrypter(AES(key, mode: AESMode.cbc));
     final encrypted = encrypter.encrypt(value, iv: iv);
     return base64.encode(encrypted.bytes);
