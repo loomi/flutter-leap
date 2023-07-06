@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:loomi_flutter_boilerplate/src/presentation/widgets/custom_button.dart';
+import 'package:loomi_flutter_boilerplate/src/presentation/widgets/custom_network_image.dart';
+
 import 'package:loomi_flutter_boilerplate/src/presentation/widgets/search_bar_component.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/app_state.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/custom_colors.dart';
@@ -63,6 +66,18 @@ class _ExampleScreenState extends State<ExampleScreen> {
                     controller: controller,
                     child: Column(
                       children: [
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: CustomNetworkImage(
+                            imageUrl:
+                                "https://images.unsplash.com/photo-1661956600684-97d3a4320e45",
+                            height: 300,
+                            width: 300,
+                            errorText: "Não foi possível carregar a imagem",
+                            borderRadius: 30,
+                            backgroundColor: Colors.white,
+                          ),
+                        ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: CustomButton(
