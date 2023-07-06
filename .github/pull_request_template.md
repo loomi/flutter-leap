@@ -1,27 +1,45 @@
+_Changes:_
 
-**What I did:**
-- Thing I’ve done
-- Another thing I've done
+_1. What i did:_
 
-**How to test:**
-1. **Run the following commands:**
-+ flutter clean
-+ flutter pub get
-+ flutter pub run build_runner build --delete-conflicting-outputs
-2. **How to get there**
-+ Go here
-+ Then go there
+- Completed the [task](link_to_task)
+- Changed something in the app
 
-**What to test:**
-+ Check if the component/view looks just like the [mockup](https://www.figma.com/file/Qs15Ulm6qkEpBLgQD5Ri80/Zro-Mobile?node-id=4658%3A55)
-+ Do this
-+ Do that
-+ Test the things that you think are worth testing, even the ones that are not in this description
+_2. What to test:_
 
-**Expected results:**
-+ This should happen
-+ That should happen
+- [ ] Layout on different devices ([mockup](link_to_mockup))
+- [ ] Happy path
+- [ ] Error handling
 
-**Known issues:**
-+ Put them here if there are any
+---
 
+_How to get there_
+
+_1. Flavor and login informations_
+
+> _flavor_: staging
+>
+> _login_: loomi
+>
+> _password_: 12345678
+
+_2. Steps_
+
+- Do login
+- Go to some app page
+
+---
+
+_Observations:_
+
+_1. Known issues_
+
+- Put them here if there are any
+
+_2. Code review pratices_
+
+- Unecessary prints/log (ctrl+f -> [ print( ] )
+- Unecessary comments (ctrl+f -> [ // ] )
+- Code organization
+- Naming of functions and variables
+- Repeated code
