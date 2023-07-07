@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:loomi_flutter_boilerplate/src/utils/environments.dart';
 
 import 'authentication.dart';
 import 'setups/setup_flavors.dart';
@@ -17,16 +18,18 @@ class DioConfig {
 
   DioConfig.internal();
 
-  final _dio = Dio();
-  final String _baseUrl = setupFlavors.baseUrl;
+  Dio? _dio;
+  final String _baseUrl = Environments.baseUrl;
 
-  get dio {
-    _dio.options.baseUrl = _baseUrl;
-    _dio.options.connectTimeout = const Duration(seconds: 30);
-    _dio.options.receiveTimeout = const Duration(seconds: 30);
-    _dio.interceptors.add(CustomInterceptors());
-    return _dio;
-  }
+  get dio => _dio ??= Dio(
+        BaseOptions(
+          baseUrl: _baseUrl,
+          connectTimeout: const Duration(seconds: 50),
+          receiveTimeout: const Duration(seconds: 50),
+        ),
+      )..interceptors.add(
+          CustomInterceptors(),
+        );
 }
 
 class CustomInterceptors extends InterceptorsWrapper {

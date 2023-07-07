@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class SetupFlavors {
@@ -10,19 +11,15 @@ class SetupFlavors {
 
   SetupFlavors._internal();
 
-  String baseUrl = "";
-
   Future<void> setup() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     if (kIsWeb) {
-      baseUrl = "";
     } else {
       if (packageInfo.packageName.contains("homolog")) {
-        baseUrl = "";
       } else if (packageInfo.packageName.contains("staging")) {
-        baseUrl = "";
+        await dotenv.load(fileName: ".env.staging");
       } else {
-        baseUrl = "";
+        await dotenv.load(fileName: ".env.production");
       }
     }
   }

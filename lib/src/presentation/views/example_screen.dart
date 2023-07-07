@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:loomi_flutter_boilerplate/src/presentation/widgets/custom_button.dart';
 import 'package:loomi_flutter_boilerplate/src/presentation/widgets/custom_network_image.dart';
-
 import 'package:loomi_flutter_boilerplate/src/presentation/widgets/search_bar_component.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/app_state.dart';
 import 'package:loomi_flutter_boilerplate/src/utils/custom_colors.dart';
