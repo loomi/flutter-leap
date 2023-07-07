@@ -50,6 +50,12 @@ dependencies:
   build_runner: 2.3.3
   package_info_plus_web: 2.0.0
 
+  ## loomi ui
+  loomi_ui_flutter:
+    git:
+      url: https://github.com/loomi/loomi-ui-flutter.git
+      ref: master
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
