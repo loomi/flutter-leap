@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 
 void printException(String identifier, e, s) {
   log(identifier);
-  if (e is DioError) {
+  if (e is DioException) {
     log("${e.requestOptions.baseUrl}${e.requestOptions.path}");
     log(e.response.toString());
     log(e.error.toString());

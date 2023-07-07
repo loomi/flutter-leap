@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:loomi_flutter_boilerplate/src/presentation/stores/custom_loader_store.dart';
+import 'package:flutter_leap/src/presentation/stores/custom_loader_store.dart';
 
 class CustomLoaderScreen extends StatefulWidget {
   const CustomLoaderScreen({Key? key}) : super(key: key);

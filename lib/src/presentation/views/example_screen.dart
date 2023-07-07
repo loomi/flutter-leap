@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:loomi_flutter_boilerplate/src/presentation/widgets/custom_network_image.dart';
-import 'package:loomi_flutter_boilerplate/src/presentation/widgets/search_bar_component.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/app_state.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/custom_colors.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/helpers/custom_error_helper.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/helpers/image_picker_helper.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/helpers/scroll_listener_helper.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/helpers/select_pictures_sheet_helper.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/helpers/show_confirmation_dialog_helper.dart';
+import 'package:flutter_leap/src/presentation/widgets/custom_network_image.dart';
+import 'package:flutter_leap/src/presentation/widgets/search_bar_component.dart';
+import 'package:flutter_leap/src/utils/app_state.dart';
+import 'package:flutter_leap/src/utils/custom_colors.dart';
+import 'package:flutter_leap/src/utils/helpers/custom_error_helper.dart';
+import 'package:flutter_leap/src/utils/helpers/image_picker_helper.dart';
+import 'package:flutter_leap/src/utils/helpers/scroll_listener_helper.dart';
+import 'package:flutter_leap/src/utils/helpers/select_pictures_sheet_helper.dart';
+import 'package:flutter_leap/src/utils/helpers/show_confirmation_dialog_helper.dart';
 import 'package:loomi_ui_flutter/loomi_ui.dart';
 
 import '../stores/example_store.dart';
@@ -106,9 +106,7 @@ class _ExampleScreenState extends State<ExampleScreen> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: LoomiTextFormField(
-                            onChanged: (value) {
-                              print(value);
-                            },
+                            onChanged: (value) {},
                             height: 48,
                             keyboardType: TextInputType.number,
                             border: Border.all(

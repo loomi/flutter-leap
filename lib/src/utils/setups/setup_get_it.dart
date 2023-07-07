@@ -1,9 +1,9 @@
 import 'package:get_it/get_it.dart';
-import 'package:loomi_flutter_boilerplate/src/domain/repositories/i_pagination_example_repository.dart';
-import 'package:loomi_flutter_boilerplate/src/domain/usecases/get_paginated_example_uc.dart';
-import 'package:loomi_flutter_boilerplate/src/external/datasources/pagination_example_datasource.dart';
-import 'package:loomi_flutter_boilerplate/src/presentation/stores/custom_loader_store.dart';
-import 'package:loomi_flutter_boilerplate/src/presentation/usecases/i_get_paginated_example_uc.dart';
+import 'package:flutter_leap/src/domain/repositories/i_pagination_example_repository.dart';
+import 'package:flutter_leap/src/domain/usecases/get_paginated_example_uc.dart';
+import 'package:flutter_leap/src/external/datasources/pagination_example_datasource.dart';
+import 'package:flutter_leap/src/presentation/stores/custom_loader_store.dart';
+import 'package:flutter_leap/src/presentation/usecases/i_get_paginated_example_uc.dart';
 
 import '../../domain/repositories/i_example_repository.dart';
 import '../../domain/usecases/get_example_uc.dart';

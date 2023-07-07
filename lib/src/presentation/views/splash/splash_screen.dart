@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:loomi_flutter_boilerplate/src/presentation/views/example_screen.dart';
+import 'package:flutter_leap/src/presentation/views/example_screen.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/custom_colors.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/fonts.dart';
+import 'package:flutter_leap/src/utils/custom_colors.dart';
+import 'package:flutter_leap/src/utils/fonts.dart';
 import '../../../utils/authentication.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -62,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  // ADD THIS WHEN ADDING FIREBASE MESSAGING, IF NOT, REMOVE IT
+  //TODO: ADD THIS WHEN ADDING FIREBASE MESSAGING, IF NOT, REMOVE IT
 
   // NotificationService().setup().then((value) {
   //   FirebaseMessaging.onMessage.listen((RemoteMessage message) {

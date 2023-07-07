@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:encrypt/encrypt.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/environments.dart';
+import 'package:flutter_leap/src/utils/environments.dart';
 
 class Authentication {
   static const _storage = FlutterSecureStorage();

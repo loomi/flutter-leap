@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
-import 'package:loomi_flutter_boilerplate/src/presentation/usecases/i_get_paginated_example_uc.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/app_state.dart';
+import 'package:flutter_leap/src/presentation/usecases/i_get_paginated_example_uc.dart';
+import 'package:flutter_leap/src/utils/app_state.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../external/models/example.dart';
