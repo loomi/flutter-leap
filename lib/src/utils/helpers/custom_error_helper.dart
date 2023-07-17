@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/helpers/show_confirmation_dialog_helper.dart';
+import 'package:flutter_leap/src/utils/helpers/show_confirmation_dialog_helper.dart';
 
 void customErrorHelper(
   BuildContext context, {
   required e,
 }) async {
-  if (e is DioError) {
+  if (e is DioException) {
     if (e.response != null) {
       showConfirmationDialogHelper(
         body:

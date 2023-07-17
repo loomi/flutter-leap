@@ -12,7 +12,7 @@
 
 ###
 
-#### Depends on Flutter 3.7.10
+#### Depends on Flutter 3.10.5 and Dart 3.0.5 >
 
 ## 📋 Flutter APP commands
 

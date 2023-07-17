@@ -1,4 +1,4 @@
-import 'package:loomi_flutter_boilerplate/src/presentation/views/custom_loader_screen/custom_loader_screen.dart';
+import 'package:flutter_leap/src/presentation/views/custom_loader_screen/custom_loader_screen.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter/material.dart';
 part 'custom_loader_store.g.dart';

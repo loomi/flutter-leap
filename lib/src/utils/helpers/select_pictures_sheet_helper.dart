@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:loomi_flutter_boilerplate/src/utils/custom_colors.dart';
+import 'package:flutter_leap/src/utils/custom_colors.dart';
 
 void openSelectPictureSheet(
   BuildContext context, {

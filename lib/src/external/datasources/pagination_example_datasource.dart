@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:loomi_flutter_boilerplate/src/domain/repositories/i_pagination_example_repository.dart';
-import 'package:loomi_flutter_boilerplate/src/external/models/paginated_response.dart';
+import 'package:flutter_leap/src/domain/repositories/i_pagination_example_repository.dart';
+import 'package:flutter_leap/src/external/models/paginated_response.dart';
 
 class PaginationExampleDatasource implements IPaginationExampleRepository {
   PaginationExampleDatasource(Dio dio, {String baseUrl = ""});
