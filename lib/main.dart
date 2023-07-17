@@ -1,7 +1,7 @@
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_leap/src/presentation/views/splash/splash_screen.dart';
-import 'package:flutter_leap/src/utils/fonts.dart';
+import 'package:flutter_leap/src/presentation/widgets/offline_wrapper_component.dart';
 import 'src/utils/custom_colors.dart';
 import 'src/utils/routes.dart';
 import 'src/utils/setups/setup_flavors.dart';
@@ -29,51 +29,9 @@ class MyApp extends StatelessWidget {
         ),
         home: const SplashScreen(),
         routes: routes,
-        builder: (buildContext, widget) {
-          return ConnectivityWidgetWrapper(
-            child: widget!,
-            disableInteraction: false,
-            color: CustomColors.primary,
-            alignment: Alignment.bottomCenter,
-            offlineWidget: IgnorePointer(
-              ignoring: true,
-              child: SizedBox(
-                height: 75,
-                child: Scaffold(
-                  backgroundColor: Colors.transparent,
-                  body: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: CustomColors.black.withOpacity(0.75),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.error_outline,
-                              color: CustomColors.white,
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            Text(
-                              "Sem conexão com a internet",
-                              style: Fonts.headline5.copyWith(
-                                color: CustomColors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
+        builder: (buildContext, child) {
+          return OfflineWrapperComponent(
+            child: child ?? Container(),
           );
         },
       ),
