@@ -13,7 +13,6 @@ class CustomNetworkImage extends StatefulWidget {
   final Widget Function(BuildContext, String, DownloadProgress)? placeholder;
   final Color? backgroundColor;
   final double errorIconSize;
-  final Color? errorIconColor;
   final String? errorText;
   final TextStyle? errorTextStyle;
   final Color progressIndicatorColor;
@@ -30,7 +29,6 @@ class CustomNetworkImage extends StatefulWidget {
     this.placeholder,
     this.backgroundColor,
     this.errorIconSize = 65,
-    this.errorIconColor,
     this.errorText,
     this.errorTextStyle,
     this.progressIndicatorColor = Colors.blue,
@@ -63,7 +61,6 @@ class _CustomNetworkImageState extends State<CustomNetworkImage> {
                       SvgPicture.asset(
                         getAssetVectorUrl('alert.svg'),
                         height: widget.errorIconSize,
-                        color: widget.errorIconColor ?? Colors.grey.shade600,
                       ),
                       if (widget.errorText != null)
                         Padding(
