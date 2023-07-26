@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_leap/src/presentation/views/example_screen.dart';
+
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+
+import 'package:flutter_leap/src/presentation/views/home_screen.dart';
 import 'package:flutter_leap/src/utils/custom_colors.dart';
-import 'package:flutter_leap/src/utils/fonts.dart';
+
 import '../../../utils/authentication.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,27 +17,25 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   removeNativeSplash() {
-    Future.delayed(const Duration(milliseconds: 500)).then((value) {
-      FlutterNativeSplash.remove();
-    });
+    FlutterNativeSplash.remove();
   }
 
   @override
   void didChangeDependencies() async {
-    Future.delayed(const Duration(milliseconds: 1500)).then((value) async {
+    Future.delayed(const Duration(milliseconds: 10)).then((value) async {
       try {
         var authenticated = await Authentication.authenticated();
         if (authenticated) {
-          Navigator.pushNamed(context, ExampleScreen.routeName);
+          Navigator.pushNamed(context, HomeScreen.routeName);
           removeNativeSplash();
         } else {
-          //Navigator.pushNamed(context, <YOUR-AUTH-SCREEN>.routeName); //TODO
-          Navigator.pushNamed(context, ExampleScreen.routeName);
+          //TODO: Handle Unauthenticated Users
+          Navigator.pushNamed(context, HomeScreen.routeName);
           removeNativeSplash();
         }
       } catch (e) {
-        //Navigator.pushNamed(context, <YOUR-AUTH-SCREEN>.routeName); //TODO
-        Navigator.pushNamed(context, ExampleScreen.routeName);
+        //TODO: Handle When Fail to Check User Authentication
+        Navigator.pushNamed(context, HomeScreen.routeName);
         removeNativeSplash();
       }
     });
@@ -46,34 +46,34 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: CustomColors.grey,
+        color: CustomColors.white,
         width: double.infinity,
         height: double.infinity,
-        //TODO: YOUR SPLASH SCREEN IMAGE HERE. IT WILL BE BEHIND THE NATIVE, IN CASE IT ENDS WITH PROBLEM, TO HAVE SOMETHING TO SHOW
-        child: Center(
-          child: Text(
-            "SPLASH SCREEN",
-            style: Fonts.headline1.copyWith(
-              color: CustomColors.black,
-            ),
-          ),
-        ),
       ),
     );
   }
 
-  //TODO: ADD THIS WHEN ADDING FIREBASE MESSAGING, IF NOT, REMOVE IT
+  //TODO: If using FirebaseMessaing, uncomment this and call on initState, If not, REMOVE IT!
 
-  // NotificationService().setup().then((value) {
-  //   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-  //     firebaseCloudMessagingListeners();
-  //   });
-  // });
+  // void notificationsSetup() {
+  //   NotificationService().setup().then(
+  //     (value) {
+  //       FirebaseMessaging.instance.getInitialMessage().then(
+  //         (message) {
+  //           // FAZ ALGO SE O APP FOI ABERTO ATRAVÉS DA NOTIFICAÇÃO
+  //         },
+  //       );
 
-  // void firebaseCloudMessagingListeners() async {
-  //   NotificationService.onMessage.listen(
-  //     (RemoteMessage? message) {
-  //       NotificationService().invokeLocalNotification(message!);
+  //       FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+  //         // EM QUALQUER MOMENTO QUE CHEGAR NOTIFICAÇÃO E O APP JÁ ESTIVER ABERTO, VAI INVOCAR A NOTIFICAÇÃO LOCAL
+  //         NotificationService().invokeLocalNotification(message);
+  //       });
+
+  //       FirebaseMessaging.onMessageOpenedApp.listen(
+  //         (RemoteMessage message) {
+  //           // FAZ ALGO SE O APP ESTAVA APENAS "MINIMIZADO" E FOI ABERTO NOVAMENTE
+  //         },
+  //       );
   //     },
   //   );
   // }

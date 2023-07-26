@@ -2,12 +2,16 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
+enum FlavorsOptions { staging, production, homolog }
+
 class SetupFlavors {
   static final SetupFlavors _setupFlavors = SetupFlavors._internal();
 
   factory SetupFlavors() {
     return _setupFlavors;
   }
+
+  FlavorsOptions? currentFlavor;
 
   SetupFlavors._internal();
 

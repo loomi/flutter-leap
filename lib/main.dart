@@ -1,5 +1,6 @@
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_leap/src/presentation/views/splash/splash_screen.dart';
 import 'package:flutter_leap/src/presentation/widgets/offline_wrapper_component.dart';
 import 'src/utils/custom_colors.dart';
@@ -10,10 +11,23 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
   SetupFlavors setupFlavors = SetupFlavors();
+
   await setupFlavors.setup();
+
   setupGetIt();
+
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.light,
+      statusBarColor: CustomColors.black.withOpacity(0.2),
+    ),
+  );
+
   runApp(const MyApp());
 }
 
@@ -24,6 +38,7 @@ class MyApp extends StatelessWidget {
     return ConnectivityAppWrapper(
       app: MaterialApp(
         title: 'Flutter Leap',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primaryColor: CustomColors.primary,
         ),
