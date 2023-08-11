@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_leap/src/utils/custom_colors.dart';
-import 'package:flutter_leap/src/utils/helpers/loomi_date_time.dart';
 
 import '../widgets/bottom_navigation_bar.dart';
 
@@ -30,7 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    DateTime.now().formatLastSeenDate;
     return Scaffold(
       backgroundColor: CustomColors.white,
       body: SizedBox(
