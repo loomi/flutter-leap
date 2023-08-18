@@ -11,11 +11,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   ##  ui
   cupertino_icons: 1.0.5
   flutter_launcher_icons: 0.13.1
-  flutter_svg: 2.0.5
   mask_text_input_formatter: 2.4.0
   cached_network_image: 3.2.3
 
@@ -27,7 +28,8 @@ dependencies:
   dio: 5.2.1+1
   form_field_validator: 1.1.0
   package_info_plus: 4.0.2
-  intl: 0.18.1
+  intl: 0.18.0
+  intl_translation: 0.18.2
   json_serializable: 6.7.1
   get_it: 7.6.0
   image_picker: 1.0.0
@@ -55,6 +57,7 @@ dependencies:
       url: https://github.com/loomi/loomi-ui-flutter.git
       ref: master
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -77,10 +80,11 @@ flutter_icons:
   remove_alpha_ios: true
 
 flutter:
+  generate: true
   uses-material-design: true
   assets:
     - assets/
     - assets/images/
     - assets/vectors/
     - .env.staging
-    # - .env.production
+    - .env.production

@@ -1,0 +1,13 @@
+{
+    "language": "pt",
+
+    "helloWorld": "Olá mundo", 
+    "@helloWorld": {
+      "description": "The conventional newborn programmer greeting"
+    },
+
+    "test": "Teste", 
+    "@test": {
+      "description": "Something that is on prove"
+    }
+}

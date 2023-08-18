@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_leap/src/utils/custom_colors.dart';
+import 'package:flutter_leap/src/utils/localization/app_localizations.dart';
 
 import '../widgets/bottom_navigation_bar.dart';
 
@@ -14,18 +15,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-
-  final List<Widget> _children = [
-    Container(
-      color: Colors.red.withOpacity(0.3),
-    ),
-    Container(
-      color: Colors.green.withOpacity(0.3),
-    ),
-    Container(
-      color: Colors.blue.withOpacity(0.3),
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +30,36 @@ class _HomeScreenState extends State<HomeScreen> {
               width: MediaQuery.of(context).size.width,
               child: IndexedStack(
                 index: _currentIndex,
-                children: _children,
+                children: [
+                  Container(
+                    color: Colors.red.withOpacity(0.3),
+                    child: Center(
+                      child: Text(L10N.of(context)!.helloWorld),
+                    ),
+                  ),
+                  LocalizationOverride(
+                    languageCode: 'en',
+                    builder: (context) {
+                      return Container(
+                        color: Colors.green.withOpacity(0.3),
+                        child: Center(
+                          child: Text(L10N.of(context)!.helloWorld),
+                        ),
+                      );
+                    },
+                  ),
+                  LocalizationOverride(
+                    languageCode: 'es',
+                    builder: (context) {
+                      return Container(
+                        color: Colors.blue.withOpacity(0.3),
+                        child: Center(
+                          child: Text(L10N.of(context)!.helloWorld),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
             ),
             Align(
