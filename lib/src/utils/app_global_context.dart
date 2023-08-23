@@ -10,7 +10,7 @@ class GlobalAppContext {
     return appKey.currentState!.pop(popObject);
   }
 
-  static Future<Object?> push(
+  static Future<Object?> pushNamed(
     String routeName, {
     Object? arguments,
   }) async {
@@ -27,23 +27,23 @@ class GlobalAppContext {
   }
 
   static Future<Object?> pushReplacement(
-    String route, {
-    String? popUntil,
+    String routeName, {
+    String? baseRoutename,
     Object? arguments,
   }) async {
     return await appKey.currentState!.pushNamedAndRemoveUntil(
-      route,
-      popUntil == null
+      routeName,
+      baseRoutename == null
           ? (route) => route.isFirst
-          : ModalRoute.withName(popUntil),
+          : ModalRoute.withName(baseRoutename),
       arguments: arguments,
     );
   }
 
-  static Future<Object?> pushReplacementNamed(String route,
+  static Future<Object?> pushReplacementNamed(String routeName,
       {Object? arguments}) async {
     return await appKey.currentState!.pushReplacementNamed(
-      route,
+      routeName,
       arguments: arguments,
     );
   }
