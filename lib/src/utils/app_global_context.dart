@@ -1,34 +1,50 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class GlobalAppContext {
   static final GlobalKey<NavigatorState> appKey = GlobalKey<NavigatorState>();
 
   static BuildContext get globalContext => appKey.currentState!.context;
 
-  static void pop() {
-    appKey.currentState!.pop();
+  static void pop({Object? popObject}) {
+    return appKey.currentState!.pop(popObject);
   }
 
-  static void push(String routeName) {
-    appKey.currentState!.pushNamed(routeName);
+  static Future<Object?> push(
+    String routeName, {
+    Object? arguments,
+  }) async {
+    return await appKey.currentState!.pushNamed(
+      routeName,
+      arguments: arguments,
+    );
   }
 
-  static void popUntil(String routeName) {
+  static void popUntil(String routeName) async {
     appKey.currentState!.popUntil(
       ModalRoute.withName(routeName),
     );
   }
 
-  static void pushReplacement(String route, {String? popUntil}) {
-    appKey.currentState!.pushNamedAndRemoveUntil(
+  static Future<Object?> pushReplacement(
+    String route, {
+    String? popUntil,
+    Object? arguments,
+  }) async {
+    return await appKey.currentState!.pushNamedAndRemoveUntil(
       route,
       popUntil == null
           ? (route) => route.isFirst
           : ModalRoute.withName(popUntil),
+      arguments: arguments,
     );
   }
 
-  static void pushReplacementNamed(String route) {
-    appKey.currentState!.pushReplacementNamed(route);
+  static Future<Object?> pushReplacementNamed(String route,
+      {Object? arguments}) async {
+    return await appKey.currentState!.pushReplacementNamed(
+      route,
+      arguments: arguments,
+    );
   }
 }
