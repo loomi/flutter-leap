@@ -6,8 +6,8 @@ class GlobalAppContext {
 
   static BuildContext get globalContext => appKey.currentState!.context;
 
-  static void pop({Object? popObject}) {
-    return appKey.currentState!.pop(popObject);
+  static void pop({Object? result}) {
+    return appKey.currentState!.pop(result);
   }
 
   static Future<Object?> pushNamed(
