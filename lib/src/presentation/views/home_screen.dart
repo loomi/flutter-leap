@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_leap/main.dart';
 
 import 'package:flutter_leap/src/utils/custom_colors.dart';
 import 'package:flutter_leap/src/utils/localization/app_localizations.dart';
+import 'package:loomi_ui_flutter/widgets/custom_button.dart';
 
 import '../widgets/bottom_navigation_bar.dart';
 
@@ -33,11 +35,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Container(
                     color: Colors.red.withOpacity(0.3),
-                    child: Center(
-                      child: Text(L10N.of(context)!.helloWorld),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Center(
+                          child: Text(L10N.of(context)!.helloWorld),
+                        ),
+                        CustomButton(
+                          text: "Trocar",
+                          onTap: () {
+                            MyApp.setLocale(
+                              context,
+                              const Locale("es"),
+                            );
+                          },
+                        )
+                      ],
                     ),
                   ),
-                  LocalizationOverride(
+                  LocalizationOverriderBuilder(
                     languageCode: 'en',
                     builder: (context) {
                       return Container(
@@ -48,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     },
                   ),
-                  LocalizationOverride(
+                  LocalizationOverriderBuilder(
                     languageCode: 'es',
                     builder: (context) {
                       return Container(
