@@ -42,7 +42,6 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                       CustomIcons.homeFilled,
                       width: 23,
                       heigth: 23,
-                      color: Colors.black,
                     ),
                     text: "",
                     onTap: () async {
@@ -62,7 +61,6 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                       CustomIcons.homeFilled,
                       width: 23,
                       heigth: 23,
-                      color: Colors.black,
                     ),
                     text: "",
                     onTap: () async {
@@ -82,7 +80,6 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                       CustomIcons.homeFilled,
                       width: 23,
                       heigth: 23,
-                      color: Colors.black,
                     ),
                     text: "",
                     onTap: () async {

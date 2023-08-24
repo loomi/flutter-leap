@@ -49,3 +49,4 @@ app.*.map.json
 .env.staging
 .env.production
 .env
+/.fvm/flutter_sdk
