@@ -19,7 +19,7 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.10.5" # Especifique a versão do Flutter aqui. Remova essa linha se quiser a versão estável mais recente.
+          flutter-version: "3.13.1" # Especifique a versão do Flutter aqui. Remova essa linha se quiser a versão estável mais recente.
 
       # Instala as dependências do Flutter
       - name: Install dependencies
