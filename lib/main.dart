@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_leap/src/presentation/views/splash/splash_screen.dart';
 import 'package:flutter_leap/src/presentation/widgets/offline_wrapper_component.dart';
 import 'package:flutter_leap/src/utils/localization/app_localizations.dart';
+import 'package:flutter_leap/src/utils/app_global_context.dart';
 import 'src/utils/custom_colors.dart';
 import 'src/utils/routes.dart';
 import 'src/utils/setups/setup_flavors.dart';
@@ -57,6 +58,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ConnectivityAppWrapper(
       app: MaterialApp(
+        navigatorKey: GlobalAppContext.appKey,
         title: 'Flutter Leap',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
