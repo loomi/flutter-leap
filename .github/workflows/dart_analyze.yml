@@ -33,7 +33,7 @@ jobs:
         run: dart fix --apply
 
       - name: Setup .env
-        run: cp .env.example .env.staging && cp .env.example .env.homolog
+        run: cp .env.example .env.staging && cp .env.example .env.production
 
       # Roda o Dart Analyzer para verificar se ainda existem problemas
       - name: Run Dart Analyzer
