@@ -1,0 +1,50 @@
+name: Dart CI
+
+on: [pull_request]
+
+jobs:
+  analyze_and_fix:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write # To push a branch
+
+    steps:
+      # Faz o checkout do código do repositório
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      # Configura o SDK Flutter
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.13.1" # Especifique a versão do Flutter aqui. Remova essa linha se quiser a versão estável mais recente.
+
+      # Instala as dependências do Flutter
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Runner Files Generation
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
+      # Tentativa de correção automática de problemas
+      - name: Auto-fix issues
+        run: dart fix --apply
+
+      - name: Setup .env
+        run: cp .env.example .env.staging && cp .env.example .env.production
+
+      # Roda o Dart Analyzer para verificar se ainda existem problemas
+      - name: Run Dart Analyzer
+        run: dart analyze
+
+      # Faz commit e push das correções, se houver
+      - name: Commit fixes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -am "Apply dart fixes" || echo "No changes to commit"
+          git push origin ${{ github.head_ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
