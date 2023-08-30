@@ -34,6 +34,8 @@
 		<string>Used to allow the user to add images in some of the modules, through the image picker plugin</string>
 		<key>UIMainStoryboardFile</key>
 		<string>Main</string>
+		<key>ITSAppUsesNonExemptEncryption</key>
+		<false/>
 		<key>UISupportedInterfaceOrientations</key>
 		<array>
 			<string>UIInterfaceOrientationPortrait</string>
