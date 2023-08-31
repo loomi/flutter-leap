@@ -26,11 +26,11 @@
 
 ### Icons generation
 
-- `Go to pubspec file and add the path of your icon on 'flutter_icon'`
+- `Go to pubspec file and add the path of your icon on 'flutter_launcher_icons' section`
 
 - `The icon should be 512x512 or 1024x1024`
 
-- `flutter pub run flutter_launcher_icons:main`
+- `dart run flutter_launcher_icons ou flutter pub run flutter_launcher_icons`
 
 ### Native Splash Screen generation
 
