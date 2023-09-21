@@ -1,6 +1,9 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
+
 import '../../utils/custom_colors.dart';
 import '../../utils/fonts.dart';
 import '../../utils/helpers/assets_helper.dart';
@@ -73,7 +76,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
               onFieldSubmitted: (value) {
                 _onSearchChanged(value);
               },
-              style: Fonts.headline5.copyWith(
+              style: Fonts.mobileBody1.copyWith(
                 fontWeight: FontWeight.w500,
                 color: CustomColors.black,
               ),
@@ -83,7 +86,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.only(top: 14, left: 6),
                 hintText: widget.hintText,
-                hintStyle: Fonts.headline5.copyWith(
+                hintStyle: Fonts.mobileBody1.copyWith(
                   fontWeight: FontWeight.normal,
                   color: CustomColors.black.withOpacity(.4),
                 ),
@@ -105,7 +108,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: CustomColors.grey,
+        color: CustomColors.grey20,
       ),
     );
   }
