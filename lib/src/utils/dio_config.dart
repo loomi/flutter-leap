@@ -4,9 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
 
 import 'package:flutter_leap/src/utils/environments.dart';
-import 'package:flutter_leap/src/utils/misc.dart';
 
 import 'authentication.dart';
+import 'helpers/dio_error_helper.dart';
 
 // ignore: constant_identifier_names
 const JSON_HEADER = "Content-Type:application/json";
@@ -84,48 +84,11 @@ class CustomInterceptors extends InterceptorsWrapper {
     DioException err,
     ErrorInterceptorHandler handler,
   ) async {
-    if (err.response?.statusCode == 401) {
-      if (await Authentication.authenticated()) {
-        // Usuário possui Token, mas teve problema pra autenticar,
-        // Normalmente, é feita uma lógica aqui pra buscar novo token com RefreshToken,
-        try {
-          // Realiza aqui a lógica caso exista, e tenta novamente a chamada pra API, utilizando o RefreshToken.
-
-          // Adiciona o header com o novo token
-          // dio?.options.headers['Authorization'] =
-          //     'Bearer $refreshToken';
-
-          //Abaixo, é a lógica para retry da chamada, com o novo token
-
-          final RequestOptions requestOptions = err.response!.requestOptions;
-
-          return handler.resolve(
-            await dio!.request(
-              requestOptions.path,
-              cancelToken: requestOptions.cancelToken,
-              data: requestOptions.data,
-              onReceiveProgress: requestOptions.onReceiveProgress,
-              onSendProgress: requestOptions.onSendProgress,
-              queryParameters: requestOptions.queryParameters,
-            ),
-          );
-        } catch (e) {
-          // Caso não consiga, exclui o token do usuário, e redireciona pra tela de login, se existir, usando GlobalAppContext.globalContext.
-
-          showUnauthSnackBar();
-
-          Authentication.logout();
-
-          return handler.next(err);
-        }
-      } else {
-        // Redireciona usuário pra tela de login, usando GlobalAppContext.globalContext.
-
-        showUnauthSnackBar();
+    switch (err.response?.statusCode) {
+      case 401:
+        return DioErrorHelper.on401(dio: dio, err: err, handler: handler);
+      default:
         return handler.next(err);
-      }
     }
-
-    return handler.next(err);
   }
 }
