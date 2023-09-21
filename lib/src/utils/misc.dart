@@ -1,5 +1,12 @@
 import 'dart:developer';
+
+import 'package:flutter/material.dart';
+
 import 'package:dio/dio.dart';
+
+import 'package:flutter_leap/src/utils/app_global_context.dart';
+import 'package:flutter_leap/src/utils/custom_colors.dart';
+import 'package:flutter_leap/src/utils/fonts.dart';
 
 void printException(String identifier, e, s) {
   log(identifier);
@@ -10,4 +17,33 @@ void printException(String identifier, e, s) {
   }
   log(e.toString());
   log(s.toString());
+}
+
+final snackBar = SnackBar(
+  content: Text(
+    'Sessão finalizada, realize o login novamente.',
+    style: Fonts.mobileBody1.copyWith(
+      color: CustomColors.black,
+    ),
+  ),
+  behavior: SnackBarBehavior.floating,
+  showCloseIcon: true,
+  closeIconColor: CustomColors.white,
+  duration: const Duration(seconds: 3),
+  backgroundColor: CustomColors.white,
+  elevation: 12,
+  shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(12),
+  ),
+  padding: const EdgeInsets.all(12),
+  margin: const EdgeInsets.fromLTRB(
+    20,
+    0,
+    20,
+    20,
+  ),
+);
+
+showUnauthSnackBar() {
+  ScaffoldMessenger.of(GlobalAppContext.globalContext).showSnackBar(snackBar);
 }
