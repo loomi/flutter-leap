@@ -57,6 +57,7 @@ dependencies:
   loomi_ui_flutter:
     git:
       url: https://github.com/loomi/loomi-ui-flutter.git
+      ref: flutter-version-3.10.5
 
 dev_dependencies:
   flutter_test:
