@@ -1,5 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
+
+import 'package:dio/dio.dart';
+
 import 'package:flutter_leap/src/utils/helpers/show_confirmation_dialog_helper.dart';
 
 void customErrorHelper(
@@ -24,12 +26,12 @@ void customErrorHelper(
         title: 'Erro',
       );
     }
+  } else {
+    showConfirmationDialogHelper(
+      body: "Ocorreu um erro inesperado.",
+      confirmButtonText: 'OK',
+      context: context,
+      title: 'Erro',
+    );
   }
-
-  showConfirmationDialogHelper(
-    body: "Ocorreu um erro inesperado.",
-    confirmButtonText: 'OK',
-    context: context,
-    title: 'Erro',
-  );
 }

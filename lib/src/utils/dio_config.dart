@@ -6,6 +6,7 @@ import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:flutter_leap/src/utils/environments.dart';
 
 import 'authentication.dart';
+import 'helpers/dio_error_helper.dart';
 
 // ignore: constant_identifier_names
 const JSON_HEADER = "Content-Type:application/json";
@@ -76,5 +77,18 @@ class CustomInterceptors extends InterceptorsWrapper {
     }
     options.headers["Accept"] = "application/json";
     return super.onRequest(options, handler);
+  }
+
+  @override
+  Future<void> onError(
+    DioException err,
+    ErrorInterceptorHandler handler,
+  ) async {
+    switch (err.response?.statusCode) {
+      case 401:
+        return DioErrorHelper.on401(dio: dio, err: err, handler: handler);
+      default:
+        return handler.next(err);
+    }
   }
 }

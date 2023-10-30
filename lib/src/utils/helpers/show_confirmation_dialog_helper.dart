@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'package:loomi_ui_flutter/widgets/custom_button.dart';
+
+import '../../presentation/widgets/custom_modal_bottom_sheet.dart';
 import '../custom_colors.dart';
 import '../fonts.dart';
-import '../../presentation/widgets/custom_modal_bottom_sheet.dart';
 
 void showConfirmationDialogHelper({
   required BuildContext context,
@@ -24,7 +26,7 @@ void showConfirmationDialogHelper({
             child: Center(
               child: Text(
                 title,
-                style: Fonts.headline5,
+                style: Fonts.mobileBody1,
               ),
             ),
           ),
@@ -33,7 +35,7 @@ void showConfirmationDialogHelper({
             child: Text(
               body,
               textAlign: TextAlign.center,
-              style: Fonts.headline6.copyWith(
+              style: Fonts.mobileBody2.copyWith(
                 color: CustomColors.black.withOpacity(0.8),
               ),
             ),
@@ -52,7 +54,7 @@ void showConfirmationDialogHelper({
                           Navigator.of(context).pop();
                         },
                         expanded: true,
-                        backgroundColor: CustomColors.black,
+                        backgroundColor: CustomColors.primary,
                         buttonTextStyle:
                             Theme.of(context).textTheme.bodyLarge!.copyWith(
                                   color: CustomColors.white,
@@ -82,7 +84,7 @@ void showConfirmationDialogHelper({
             child: Center(
               child: Text(
                 title,
-                style: Fonts.headline5,
+                style: Fonts.mobileBody1,
               ),
             ),
           ),
@@ -91,7 +93,7 @@ void showConfirmationDialogHelper({
             child: Text(
               body,
               textAlign: TextAlign.center,
-              style: Fonts.headline6.copyWith(
+              style: Fonts.mobileBody2.copyWith(
                 color: CustomColors.black.withOpacity(0.8),
               ),
             ),
@@ -103,7 +105,7 @@ void showConfirmationDialogHelper({
                 Expanded(
                   child: CustomButton(
                     text: confirmButtonText ?? "Ok",
-                    backgroundColor: CustomColors.black,
+                    backgroundColor: CustomColors.primary,
                     buttonTextStyle:
                         Theme.of(context).textTheme.bodyLarge!.copyWith(
                               color: CustomColors.white,

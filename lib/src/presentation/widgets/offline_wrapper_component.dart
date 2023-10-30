@@ -1,5 +1,6 @@
-import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 import 'package:flutter/material.dart';
+
+import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 
 import '../../utils/custom_colors.dart';
 import '../../utils/fonts.dart';
@@ -51,7 +52,7 @@ class _OfflineWrapperComponentState extends State<OfflineWrapperComponent> {
                       ),
                       Text(
                         "Sem conexão com a internet",
-                        style: Fonts.headline5.copyWith(
+                        style: Fonts.mobileBody1.copyWith(
                           color: CustomColors.white,
                         ),
                       ),
