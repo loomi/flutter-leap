@@ -1,9 +1,13 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:video_player/video_player.dart';
+
+import 'package:flutter_leap/src/utils/custom_colors.dart';
 
 class CustomVideoPicker extends StatefulWidget {
   const CustomVideoPicker({
@@ -85,107 +89,103 @@ class _CustomVideoPickerState extends State<CustomVideoPicker> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                GestureDetector(
-                  onTap: () => showChooseCameraOrFilesModal(),
-                  child: Container(
-                      width: 120,
-                      alignment: Alignment.centerLeft,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Theme.of(context).primaryColor,
-                        ),
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(12),
-                        ),
-                      ),
-                      padding: const EdgeInsets.all(8),
-                      child: Column(
-                        children: [
-                          Icon(
-                            Icons.video_call,
-                            color: widget.iconColor ??
-                                Theme.of(context).primaryColor,
-                          ),
-                          const SizedBox(
-                            height: 6,
-                          ),
-                          Text(
-                            widget.label ?? "Escolha um vídeo",
-                            style: widget.labelStyle ??
-                                TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontSize: 12,
-                                ),
-                          ),
-                        ],
-                      )),
-                ),
-                ...List.generate(
-                  controllers.length,
-                  (index) => Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              GestureDetector(
+                onTap: () => showChooseCameraOrFilesModal(context),
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(12),
+                    ),
+                  ),
+                  padding: const EdgeInsets.all(8),
+                  child: Column(
                     children: [
-                      if (controllers[index].value.isInitialized)
-                        Container(
-                          margin: const EdgeInsets.all(8),
-                          child: GestureDetector(
-                            onTap: () {
-                              showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return ShowVideoDialog(
-                                      controllers[index],
-                                      onRemove: widget.onRemove != null
-                                          ? () {
-                                              onRemoveVideo(index, context);
-                                            }
-                                          : null,
-                                      removeWidget: widget.removeWidget,
-                                    );
-                                  });
-                            },
-                            child: SizedBox(
-                              height: widget.videoHeight ?? 50,
-                              width: widget.videoHeight ?? 50,
-                              child: VideoPlayer(
-                                controllers[index],
-                              ),
+                      Icon(
+                        Icons.video_call,
+                        color:
+                            widget.iconColor ?? Theme.of(context).primaryColor,
+                      ),
+                      const SizedBox(
+                        height: 6,
+                      ),
+                      Text(
+                        widget.label ?? "Escolha um vídeo",
+                        style: widget.labelStyle ??
+                            TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 12,
                             ),
-                          ),
-                        )
-                      else
-                        Container(),
+                      ),
                     ],
                   ),
                 ),
-              ]),
+              ),
+              ...List.generate(
+                controllers.length,
+                (index) => Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (controllers[index].value.isInitialized)
+                      Container(
+                        margin: const EdgeInsets.all(8),
+                        child: GestureDetector(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return ShowVideoDialog(
+                                  controllers[index],
+                                  onRemove: widget.onRemove != null
+                                      ? () {
+                                          onRemoveVideo(index, context);
+                                        }
+                                      : null,
+                                  removeWidget: widget.removeWidget,
+                                );
+                              },
+                            );
+                          },
+                          child: SizedBox(
+                            height: widget.videoHeight ?? 50,
+                            width: widget.videoHeight ?? 50,
+                            child: VideoPlayer(
+                              controllers[index],
+                            ),
+                          ),
+                        ),
+                      )
+                    else
+                      Container(),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  showChooseCameraOrFilesModal() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          contentPadding: const EdgeInsets.all(0),
-          backgroundColor: Colors.transparent,
-          content: IntrinsicHeight(
-            child: Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: Colors.white,
-              ),
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
+  void showChooseCameraOrFilesModal(BuildContext context) async {
+    try {
+      showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (BuildContext context) {
+          return SafeArea(
+            child: SingleChildScrollView(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                child: Wrap(
+                  children: <Widget>[
                     GestureDetector(
                       onTap: () async {
                         final status = await Permission.camera.request();
@@ -202,26 +202,26 @@ class _CustomVideoPickerState extends State<CustomVideoPicker> {
                           );
                         }
                       },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text(
-                            "Gravar vídeo",
-                            style: widget.labelStyle ??
-                                const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 12,
-                                ),
+                      child: Container(
+                        width: double.infinity,
+                        height: 55,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: CustomColors.white,
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(15),
+                            topRight: Radius.circular(15),
                           ),
-                          Icon(
-                            Icons.video_call_sharp,
-                            color: widget.iconColor ?? Colors.black,
+                        ),
+                        child: Text(
+                          "Gravar Vídeo",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: CustomColors.black,
+                            fontSize: 16,
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
                     ),
                     GestureDetector(
                       onTap: () async {
@@ -233,36 +233,69 @@ class _CustomVideoPickerState extends State<CustomVideoPicker> {
                           Navigator.pop(context);
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
-                              content:
-                                  Text('Permissão de acesso não concedida'),
+                              content: Text(
+                                'Permissão de acesso não concedida',
+                              ),
                             ),
                           );
                         }
                       },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text(
-                            "Buscar vídeo",
-                            style: widget.labelStyle ??
-                                const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 12,
-                                ),
+                      child: Container(
+                        width: double.infinity,
+                        height: 55,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: CustomColors.white,
+                          borderRadius: const BorderRadius.only(
+                            bottomRight: Radius.circular(15),
+                            bottomLeft: Radius.circular(15),
                           ),
-                          Icon(
-                            Icons.upload_file_outlined,
-                            color: widget.iconColor ?? Colors.black,
+                        ),
+                        child: Text(
+                          "Buscar Vídeo",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: CustomColors.black,
+                            fontSize: 16,
                           ),
-                        ],
+                        ),
                       ),
-                    )
-                  ]),
+                    ),
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: Container(
+                        margin: const EdgeInsets.only(top: 10, bottom: 30),
+                        width: double.infinity,
+                        height: 55,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: CustomColors.white,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(
+                              15,
+                            ),
+                          ),
+                        ),
+                        child: Text(
+                          "Cancelar",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: CustomColors.black,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
-          ),
-        );
-      },
-    );
+          );
+        },
+      );
+    } catch (e) {
+      log(e.toString());
+    }
   }
 }
 
@@ -295,95 +328,110 @@ class _ShowVideoDialogState extends State<ShowVideoDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       contentPadding: const EdgeInsets.all(0),
+      insetPadding: const EdgeInsets.symmetric(
+        vertical: 25,
+        horizontal: 20,
+      ),
       backgroundColor: Colors.transparent,
       content: IntrinsicHeight(
         child: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height * 0.85,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(20)),
             color: Colors.white,
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: GestureDetector(
-                    onTap: () {
-                      widget.controller.pause();
-                      Navigator.pop(context);
-                    },
-                    child: const Icon(
-                      Icons.highlight_remove_sharp,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
+          child: Stack(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  setState(
+                    () {
                       isPlaying = !isPlaying;
                       if (isPlaying) {
                         widget.controller.play();
                       } else {
                         widget.controller.pause();
                       }
-                    });
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      AspectRatio(
-                        aspectRatio: widget.controller.value.aspectRatio,
+                    },
+                  );
+                },
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    ClipRRect(
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height * 0.85,
                         child: VideoPlayer(
                           widget.controller,
                         ),
                       ),
-                      Visibility(
-                        visible: !isPlaying,
-                        child: const Align(
-                          alignment: Alignment.center,
-                          child: Icon(
-                            Icons.play_arrow,
-                            color: Colors.grey,
-                          ),
+                    ),
+                    Visibility(
+                      visible: !isPlaying,
+                      child: const Align(
+                        alignment: Alignment.center,
+                        child: Icon(
+                          Icons.play_arrow_sharp,
+                          color: Colors.black,
+                          size: 40,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 4,
-                ),
-                if (widget.onRemove != null)
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: GestureDetector(
-                      onTap: widget.onRemove,
-                      child: widget.removeWidget ??
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.delete,
-                                color: Colors.red,
-                              ),
-                              Text(
-                                "Excluir vídeo",
-                                style: TextStyle(
-                                  color: Colors.red,
-                                  fontSize: 12,
+              ),
+              Align(
+                alignment: Alignment.topRight,
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (widget.onRemove != null)
+                          GestureDetector(
+                            onTap: widget.onRemove,
+                            child: widget.removeWidget ??
+                                const Icon(
+                                  Icons.delete_outline_sharp,
+                                  color: Colors.black,
+                                  size: 30,
                                 ),
-                              ),
-                            ],
                           ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            widget.controller.pause();
+                            Navigator.pop(context);
+                          },
+                          child: const Icon(
+                            Icons.highlight_remove_sharp,
+                            color: Colors.black,
+                            size: 30,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-              ]),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

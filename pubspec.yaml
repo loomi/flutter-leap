@@ -38,7 +38,7 @@ dependencies:
   connectivity_wrapper: 1.1.3
   flutter_dotenv: 5.1.0
   dio_smart_retry: 5.0.0
-  video_player: 2.6.0
+  video_player: 2.6.1
   permission_handler: 10.2.0
 
   ##firebase
@@ -55,10 +55,11 @@ dependencies:
   mobx_codegen: 2.3.0
   build_runner: 2.4.6
 
-  ## loomi ui
+  # loomi ui
   loomi_ui_flutter:
     git:
       url: https://github.com/loomi/loomi-ui-flutter.git
+      ref: flutter-version-3.10.5
 
 dev_dependencies:
   flutter_test:
