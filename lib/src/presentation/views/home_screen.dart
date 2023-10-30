@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_leap/main.dart';
+import 'package:flutter_leap/src/presentation/widgets/custom_video_picker.dart';
 
 import 'package:flutter_leap/src/utils/custom_colors.dart';
 import 'package:flutter_leap/src/utils/localization/app_localizations.dart';
@@ -17,6 +20,15 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
+
+  List<File> files = [];
+  onAdd(File file) {
+    files.add(file);
+  }
+
+  onRemove(File file) {
+    files.remove(file);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +50,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        CustomVideoPicker(
+                          onAdd: onAdd,
+                          onRemove: onRemove,
+                        ),
                         Center(
                           child: Text(L10N.of(context)!.helloWorld),
                         ),
