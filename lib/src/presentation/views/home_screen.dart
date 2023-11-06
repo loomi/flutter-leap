@@ -21,10 +21,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-<<<<<<< HEAD
   final pageViewController = PageController();
-=======
-
   List<File> files = [];
   onAdd(File file) {
     files.add(file);
@@ -34,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
     files.remove(file);
   }
 
->>>>>>> e5fabcfb428a2c3f96a22620148ad196dcb0cca0
   @override
   Widget build(BuildContext context) {
     return Scaffold(
