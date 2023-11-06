@@ -32,7 +32,11 @@ class _HomeScreenState extends State<HomeScreen> {
               width: MediaQuery.of(context).size.width,
               child: PageView(
                 controller: pageViewController,
-                // index: _currentIndex,
+                onPageChanged: (value) {
+                  setState(() {
+                    _currentIndex = value;
+                  });
+                },
                 children: [
                   Container(
                     color: Colors.red.withOpacity(0.3),
