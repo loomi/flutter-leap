@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:loomi_ui_flutter/widgets/custom_button.dart';
 
 import 'package:flutter_leap/main.dart';
 import 'package:flutter_leap/src/utils/custom_colors.dart';
+import 'package:flutter_leap/src/utils/helpers/select_videos_sheet_helper.dart';
 import 'package:flutter_leap/src/utils/localization/app_localizations.dart';
 
 import '../widgets/bottom_navigation_bar.dart';
@@ -18,6 +21,15 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
+
+  List<File> files = [];
+  onAdd(File file) {
+    files.add(file);
+  }
+
+  onRemove(File file) {
+    files.remove(file);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +51,44 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        GestureDetector(
+                          onTap: () => openSelectVideoSheet(context),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                  borderRadius: const BorderRadius.all(
+                                    Radius.circular(12),
+                                  ),
+                                ),
+                                padding: const EdgeInsets.all(8),
+                                child: Column(
+                                  children: [
+                                    Icon(
+                                      Icons.video_call,
+                                      color: Theme.of(context).primaryColor,
+                                    ),
+                                    const SizedBox(
+                                      height: 6,
+                                    ),
+                                    Text(
+                                      "Escolha um vídeo",
+                                      style: TextStyle(
+                                        color: Theme.of(context).primaryColor,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                         Center(
                           child: Text(L10N.of(context)!.helloWorld),
                         ),
