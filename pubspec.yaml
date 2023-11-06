@@ -28,13 +28,13 @@ dependencies:
   retrofit: 4.0.1
   dio: 5.3.2
   form_field_validator: 1.1.0
-  package_info_plus: 4.1.0
+  package_info_plus: 3.1.2
   intl: ^0.18.0
   intl_translation: 0.18.2
   json_serializable: 6.7.1
   get_it: 7.6.0
   image_picker: 1.0.2
-  file_picker: 5.3.3
+  file_picker: 5.2.10
   connectivity_wrapper: 1.1.3
   flutter_dotenv: 5.1.0
   dio_smart_retry: 5.0.0
@@ -46,7 +46,7 @@ dependencies:
 
   ##  for reactivity
   mobx: 2.2.0
-  flutter_mobx: 2.0.6+5
+  flutter_mobx: 2.1.0
 
   ##  generators
   retrofit_generator: 7.0.8

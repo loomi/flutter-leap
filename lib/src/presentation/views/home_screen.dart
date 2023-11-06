@@ -17,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-
+  final pageViewController = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,8 +30,9 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              child: IndexedStack(
-                index: _currentIndex,
+              child: PageView(
+                controller: pageViewController,
+                // index: _currentIndex,
                 children: [
                   Container(
                     color: Colors.red.withOpacity(0.3),
@@ -84,6 +85,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 index: _currentIndex,
                 onClick: (value) {
                   setState(() {
+                    pageViewController.jumpToPage(
+                      value,
+                    );
                     _currentIndex = value;
                   });
                 },
