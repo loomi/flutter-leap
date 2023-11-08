@@ -18,6 +18,11 @@ class SetupFlavors {
   Future<void> setup() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     if (kIsWeb) {
+      if (const String.fromEnvironment("flavor").contains("staging")) {
+        await dotenv.load(fileName: ".env.staging");
+      } else {
+        await dotenv.load(fileName: ".env.production");
+      }
     } else {
       if (packageInfo.packageName.contains("homolog")) {
       } else if (packageInfo.packageName.contains("staging")) {

@@ -12,7 +12,6 @@ import 'package:flutter_leap/src/utils/localization/app_localizations.dart';
 import '../widgets/bottom_navigation_bar.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const routeName = "/home";
   const HomeScreen({super.key});
 
   @override

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_leap/src/presentation/views/home_screen/home_screen_middleware.dart';
 
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-import 'package:flutter_leap/src/presentation/views/home_screen.dart';
 import 'package:flutter_leap/src/utils/custom_colors.dart';
 
 import '../../../utils/authentication.dart';
@@ -26,16 +26,16 @@ class _SplashScreenState extends State<SplashScreen> {
       try {
         var authenticated = await Authentication.authenticated();
         if (authenticated) {
-          Navigator.pushNamed(context, HomeScreen.routeName);
+          Navigator.pushNamed(context, HomeScreenMiddleware.routeName);
           removeNativeSplash();
         } else {
           //TODO: Handle Unauthenticated Users
-          Navigator.pushNamed(context, HomeScreen.routeName);
+          Navigator.pushNamed(context, HomeScreenMiddleware.routeName);
           removeNativeSplash();
         }
       } catch (e) {
         //TODO: Handle When Fail to Check User Authentication
-        Navigator.pushNamed(context, HomeScreen.routeName);
+        Navigator.pushNamed(context, HomeScreenMiddleware.routeName);
         removeNativeSplash();
       }
     });

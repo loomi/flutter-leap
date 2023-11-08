@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_leap/src/presentation/views/splash/splash_screen.dart';
 import 'package:flutter_leap/src/presentation/widgets/offline_wrapper_component.dart';
+import 'package:flutter_leap/src/presentation/widgets/scaled_app_wrapper_component.dart';
 import 'package:flutter_leap/src/utils/localization/app_localizations.dart';
 import 'package:flutter_leap/src/utils/app_global_context.dart';
+import 'package:scaled_app/scaled_app.dart';
 import 'src/utils/custom_colors.dart';
 import 'src/utils/routes.dart';
 import 'src/utils/setups/setup_flavors.dart';
@@ -12,7 +14,8 @@ import 'src/utils/setups/setup_get_it.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding =
+      ScaledWidgetsFlutterBinding.ensureInitialized();
 
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
@@ -68,7 +71,7 @@ class _MyAppState extends State<MyApp> {
         routes: routes,
         builder: (buildContext, child) {
           return OfflineWrapperComponent(
-            child: child ?? Container(),
+            child: ScaledAppWrapper(child: child ?? Container()),
           );
         },
         locale: _locale,
