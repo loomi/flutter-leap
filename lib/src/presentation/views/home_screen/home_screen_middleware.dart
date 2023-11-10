@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_leap/src/presentation/views/home_screen.dart';
 import 'package:flutter_leap/src/presentation/widgets/responsive_layout.dart';
 import 'package:flutter_leap/src/utils/custom_colors.dart';
