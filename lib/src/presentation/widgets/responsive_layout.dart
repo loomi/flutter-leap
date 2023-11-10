@@ -11,7 +11,9 @@ class ResponsiveLayout extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         BaseSize baseSize = ScreenUtils.getCurrentBaseSize(WidgetsBinding
-            .instance.platformDispatcher.views.first.physicalSize);
+                .instance.platformDispatcher.views.first.physicalSize /
+            WidgetsBinding
+                .instance.platformDispatcher.views.first.devicePixelRatio);
 
         return buildScreen.call(baseSize);
       },
