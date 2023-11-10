@@ -45,11 +45,7 @@ android {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.loomiFlutterBoilerplate"
         minSdkVersion 21
-<<<<<<< HEAD
-        targetSdkVersion 30
-=======
         targetSdkVersion 33
->>>>>>> e5fabcfb428a2c3f96a22620148ad196dcb0cca0
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
