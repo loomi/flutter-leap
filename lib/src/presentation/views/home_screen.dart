@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_leap/src/presentation/widgets/custom_snack_bar.dart';
 
 import 'package:loomi_ui_flutter/widgets/custom_button.dart';
 
@@ -98,6 +99,18 @@ class _HomeScreenState extends State<HomeScreen> {
                             MyApp.setLocale(
                               context,
                               const Locale("es"),
+                            );
+                          },
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                        CustomButton(
+                          text: "Show snack bar",
+                          onTap: () {
+                            showCustomSnackBar(
+                              context,
+                              content: const Text("You have a message"),
                             );
                           },
                         )
