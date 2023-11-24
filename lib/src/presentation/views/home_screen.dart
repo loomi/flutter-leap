@@ -8,6 +8,7 @@ import 'package:flutter_leap/main.dart';
 import 'package:flutter_leap/src/utils/custom_colors.dart';
 import 'package:flutter_leap/src/utils/helpers/select_videos_sheet_helper.dart';
 import 'package:flutter_leap/src/utils/localization/app_localizations.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import '../widgets/bottom_navigation_bar.dart';
 
@@ -94,7 +95,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         CustomButton(
                           text: "Trocar",
-                          onTap: () {
+                          onTap: () async {
+                            try {
+                              int? test;
+                              test! + 3;
+                            } catch (exception, stackTrace) {
+                              await Sentry.captureException(
+                                exception,
+                                stackTrace: stackTrace,
+                              );
+                            }
                             MyApp.setLocale(
                               context,
                               const Locale("es"),
