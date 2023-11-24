@@ -44,6 +44,9 @@ dependencies:
   camera: 0.10.5+5
   path_provider: 2.1.1
 
+  #sentry
+  sentry_flutter: ^7.13.2
+
   ##firebase
   firebase_messaging: 14.7.2
 
