@@ -7,8 +7,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_leap/src/utils/app_global_context.dart';
 import 'package:flutter_leap/src/utils/custom_colors.dart';
 import 'package:flutter_leap/src/utils/fonts.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
-void printException(String identifier, e, s) {
+Future<void> printException(String identifier, e, s) async {
   log(identifier);
   if (e is DioException) {
     log("${e.requestOptions.baseUrl}${e.requestOptions.path}");
@@ -17,6 +18,14 @@ void printException(String identifier, e, s) {
   }
   log(e.toString());
   log(s.toString());
+  await createSentryException(e, s);
+}
+
+Future<void> createSentryException(exception, stackTrace) async {
+  await Sentry.captureException(
+    exception,
+    stackTrace: stackTrace,
+  );
 }
 
 final snackBar = SnackBar(
@@ -47,3 +56,7 @@ final snackBar = SnackBar(
 showUnauthSnackBar() {
   ScaffoldMessenger.of(GlobalAppContext.globalContext).showSnackBar(snackBar);
 }
+
+// ignore: non_constant_identifier_names
+String SENTRY_ID =
+    'https://1f99b34f8bb7ef3b0a4f5b96f79d2854@o4506281261858816.ingest.sentry.io/4506281291743232';
