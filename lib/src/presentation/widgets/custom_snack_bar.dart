@@ -1,22 +1,46 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_leap/src/utils/custom_colors.dart';
+import 'package:flutter_leap/src/utils/fonts.dart';
+
 showCustomSnackBar(
   BuildContext context, {
-  required Widget content,
-  Color backgroundColor = Colors.black,
+  Widget? content,
+  String? textContent,
+  TextStyle? textStyle,
+  Color? defaultTextColor,
+  Color? backgroundColor,
   EdgeInsets padding = const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+  EdgeInsets margin = const EdgeInsets.all(12),
   bool? showCloseIcon,
   Duration duration = const Duration(seconds: 3),
   Animation<double>? animation,
+  double? borderRadius,
   void Function()? onVisible,
   DismissDirection dismissDirection = DismissDirection.down,
   Clip clipBehavior = Clip.hardEdge,
 }) =>
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: backgroundColor,
+        backgroundColor: backgroundColor ?? CustomColors.primary,
         padding: padding,
-        content: content,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              borderRadius ?? 8,
+            ),
+          ),
+        ),
+        margin: margin,
+        content: content ??
+            Text(
+              textContent ?? "",
+              style: textStyle ??
+                  Fonts.mobileCaption1.copyWith(
+                    color: defaultTextColor ?? CustomColors.black,
+                  ),
+            ),
+        behavior: SnackBarBehavior.floating,
         showCloseIcon: showCloseIcon,
         duration: duration,
         animation: animation,

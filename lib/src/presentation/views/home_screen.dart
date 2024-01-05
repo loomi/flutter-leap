@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_leap/src/presentation/widgets/custom_snack_bar.dart';
 
 import 'package:loomi_ui_flutter/widgets/custom_button.dart';
 
 import 'package:flutter_leap/main.dart';
+import 'package:flutter_leap/src/presentation/widgets/custom_snack_bar.dart';
 import 'package:flutter_leap/src/utils/custom_colors.dart';
 import 'package:flutter_leap/src/utils/helpers/select_videos_sheet_helper.dart';
 import 'package:flutter_leap/src/utils/localization/app_localizations.dart';
@@ -110,7 +110,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           onTap: () {
                             showCustomSnackBar(
                               context,
-                              content: const Text("You have a message"),
+                              backgroundColor: Colors.black,
+                              textContent: "Sou uma snackbar!",
+                              defaultTextColor: Colors.white,
                             );
                           },
                         )
