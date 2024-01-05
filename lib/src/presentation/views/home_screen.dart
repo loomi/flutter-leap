@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_leap/src/utils/misc.dart';
 
 import 'package:loomi_ui_flutter/widgets/custom_button.dart';
 
@@ -95,10 +96,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         CustomButton(
                           text: "Trocar",
                           onTap: () async {
+                            //TODO remove latter
                             MyApp.setLocale(
                               context,
                               const Locale("es"),
                             );
+                            try {
+                              int? i;
+                              i! + 1;
+                            } catch (e, s) {
+                              printException("home", e, s);
+                            }
                           },
                         )
                       ],
