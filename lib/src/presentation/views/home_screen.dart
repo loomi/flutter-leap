@@ -21,7 +21,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
-
+  final pageViewController = PageController();
   List<File> files = [];
   onAdd(File file) {
     files.add(file);
@@ -43,8 +43,13 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
-              child: IndexedStack(
-                index: _currentIndex,
+              child: PageView(
+                controller: pageViewController,
+                onPageChanged: (value) {
+                  setState(() {
+                    _currentIndex = value;
+                  });
+                },
                 children: [
                   Container(
                     color: Colors.red.withOpacity(0.3),
@@ -135,6 +140,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 index: _currentIndex,
                 onClick: (value) {
                   setState(() {
+                    pageViewController.jumpToPage(
+                      value,
+                    );
                     _currentIndex = value;
                   });
                 },
