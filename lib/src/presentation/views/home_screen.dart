@@ -20,8 +20,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
+
   final pageViewController = PageController();
+
   List<File> files = [];
+
   onAdd(File file) {
     files.add(file);
   }
