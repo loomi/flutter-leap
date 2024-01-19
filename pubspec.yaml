@@ -85,6 +85,8 @@ flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/images/wifi.png"
+  adaptive_icon_foreground: "assets/images/wifi.png"
+  adaptive_icon_background: "#ffffff"
   remove_alpha_ios: true
 
 flutter:
