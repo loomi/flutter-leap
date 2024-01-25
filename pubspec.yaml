@@ -1,0 +1,93 @@
+name: flutter_leap_v2
+
+description: "A new Flutter project."
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+environment:
+  sdk: ">=3.2.4 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  flutter_svg: 2.0.8
+  mask_text_input_formatter: 2.5.0
+  cached_network_image: 3.3.0
+
+  ##  utils
+  shared_preferences: 2.2.2
+  flutter_secure_storage: 9.0.0
+  encrypt: 5.0.3
+  retrofit: 4.0.3
+  dio: 5.3.3
+  form_field_validator: 1.1.0
+
+  package_info_plus: 4.2.0
+  intl: 0.18.1
+  json_serializable: 6.7.1
+  get_it: 7.6.4
+  image_picker: 1.0.4
+  file_picker: 6.0.0
+  connectivity_wrapper: 1.1.4
+  flutter_dotenv: 5.1.0
+  dio_smart_retry: 6.0.0
+  video_player: 2.7.2
+  permission_handler: 11.0.1
+  flutter_image_compress: 2.1.0
+  camera: 0.10.5+5
+  path_provider: 2.1.1
+  scaled_app: 2.2.0
+
+  ##firebase
+  firebase_messaging: 14.7.2
+
+  flutter_local_notifications: 16.1.0
+
+  ##  for reactivity
+  mobx: 2.3.0+1
+  flutter_mobx: 2.2.0+2
+
+  ##  generators
+  retrofit_generator: 8.0.6
+  mobx_codegen: 2.6.0+1
+  build_runner: 2.4.8
+
+  # loomi ui
+  loomi_ui_flutter:
+    git:
+      url: https://github.com/loomi/loomi-ui-flutter.git
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+  flutter_native_splash: 2.3.2
+  flutter_launcher_icons: 0.13.1
+
+flutter_native_splash:
+  color: "#1f014d"
+  image: "assets/images/leap_icon.png"
+  android: true
+  ios: true
+  # android_gravity: fill
+  # ios_content_mode: scaleAspectFill
+
+# //ic_launcher
+# launcher_icon
+flutter_launcher_icons:
+  android: "icon_launcher"
+  ios: true
+  image_path: "assets/images/leap_icon.png"
+  remove_alpha_ios: true
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/images/
+    - assets/vectors/
+    - .env.staging
+    - .env.production

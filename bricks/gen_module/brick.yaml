@@ -1,0 +1,13 @@
+name: gen_module
+description: Template para módulo Flutter com Clean Architecture.
+
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev.52 <0.1.0"
+
+vars:
+  module:
+    type: string
+    description: Your module name
+    prompt: What is your module name?
