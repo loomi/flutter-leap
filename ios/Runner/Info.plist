@@ -26,6 +26,8 @@
 		<string>Esta permissão é necessária para permitir o usuario alterar sua foto de perfil</string>
 		<key>NSCameraUsageDescription</key>
 		<string>Esta permissão é necessária para permitir o usuario alterar sua foto de perfil</string>
+		<key>ITSAppUsesNonExemptEncryption</key>
+		<false/>
 		<key>LSRequiresIPhoneOS</key>
 		<true/>
 		<key>UILaunchStoryboardName</key>
