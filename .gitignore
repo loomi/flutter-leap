@@ -52,3 +52,6 @@ app.*.map.json
 /.fvm/flutter_sdk
 .mason
 mason-lock.json
+
+# FVM Version Cache
+.fvm/
