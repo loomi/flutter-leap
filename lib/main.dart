@@ -38,7 +38,7 @@ void main() async {
 }
 
 class AppWidget extends StatefulWidget {
-  const AppWidget({Key? key}) : super(key: key);
+  const AppWidget({super.key});
 
   static void setLocale(BuildContext context, Locale newLocale) async {
     _AppWidgetState? state = context.findAncestorStateOfType<_AppWidgetState>();

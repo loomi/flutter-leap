@@ -10,8 +10,8 @@ import 'package:loomi_ui_flutter/loomi_ui.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future<File?> getImageHelper({required ImageSource source}) async {
-  final ImagePicker _picker = ImagePicker();
-  XFile? image = await _picker.pickImage(
+  final ImagePicker picker = ImagePicker();
+  XFile? image = await picker.pickImage(
     source: source,
   );
 
@@ -37,9 +37,9 @@ Future<File?> getVideoHelper({
   required ImageSource source,
   Duration? maxDuration,
 }) async {
-  final ImagePicker _picker = ImagePicker();
+  final ImagePicker picker = ImagePicker();
 
-  final pickedFile = await _picker.pickVideo(
+  final pickedFile = await picker.pickVideo(
     source: source,
     preferredCameraDevice: CameraDevice.front,
     maxDuration: maxDuration,

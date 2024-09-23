@@ -59,13 +59,13 @@ dependencies:
     git:
       url: https://github.com/loomi/loomi-ui-flutter.git
 
+  flutter_native_splash: any
+  json_annotation: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: 4.0.0
-  flutter_native_splash: 2.3.2
-  flutter_launcher_icons: 0.13.1
+  flutter_lints: 4.0.0flutter_launcher_icons: 0.13.1
 
 flutter_native_splash:
   color: "#1f014d"
