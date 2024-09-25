@@ -40,7 +40,7 @@ dependencies:
   flutter_image_compress: 2.3.0
   camera: 0.10.5+5
   path_provider: 2.1.1
-  scaled_app: 2.3.0 
+  scaled_app: 2.3.0
 
   ##firebase
   firebase_messaging: 14.9.4
@@ -55,11 +55,6 @@ dependencies:
   retrofit_generator: 8.1.0
   mobx_codegen: 2.4.0
   build_runner: 2.4.10
-
-  # loomi ui
-  loomi_ui_flutter:
-    git:
-      url: https://github.com/loomi/loomi-ui-flutter.git
 
 dev_dependencies:
   flutter_test:
