@@ -1,5 +1,5 @@
 import 'package:flutter_leap_v2/bootstrap.dart';
-import 'package:flutter_leap_v2/shared/utils/setups/setup_flavors.dart';
+import 'package:flutter_leap_v2/shared/utils/flavors_options.dart';
 
 void main() async {
   bootstrap(

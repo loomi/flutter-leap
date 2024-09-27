@@ -35,7 +35,6 @@ dependencies:
   image_picker: 1.1.1
   file_picker: 6.0.0
   connectivity_wrapper: 1.1.4
-  flutter_dotenv: 5.1.0
   dio_smart_retry: 6.0.0
   video_player: 2.7.2
   permission_handler: 11.3.1
@@ -93,5 +92,3 @@ flutter:
     - assets/
     - assets/images/
     - assets/vectors/
-    - .env.staging
-    - .env.production

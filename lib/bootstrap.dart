@@ -8,7 +8,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:flutter_leap_v2/app/app_module.dart';
 import 'package:flutter_leap_v2/shared/injector/get_it_injector.dart';
-import 'package:flutter_leap_v2/shared/utils/setups/setup_flavors.dart';
+import 'package:flutter_leap_v2/shared/utils/flavors_options.dart';
 
 import 'app_widget.dart';
 import 'shared/utils/custom_colors.dart';
@@ -23,9 +23,7 @@ void bootstrap({
 
       FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-      SetupFlavors setupFlavors = SetupFlavors();
-
-      await setupFlavors.setup();
+      FlavorsConfig.initialize(flavor);
 
       AppModule(injector: GetItInjector()).registerAllDependencies();
 
