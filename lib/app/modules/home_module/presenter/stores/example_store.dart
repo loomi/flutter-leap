@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_leap_v2/shared/utils/helpers/result_handler.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 
@@ -24,14 +26,37 @@ abstract class _ExampleStore with Store {
 
   @action
   Future<void> getExample() async {
-    try {
-      appState = AppState.loading;
-      example = await GetIt.I.get<IGetExampleUseCase>()();
-    } catch (e, s) {
+    appState = AppState.loading;
+
+    var result = await handleResult(() async {
+      return await GetIt.I.get<IGetExampleUseCase>()();
+    });
+
+    if (result.isSuccess) {
+      debugPrint("Success");
+    } else if (result.isFailure) {
       changeAppState(AppState.error);
-      printException("ExampleStore.getExample", e, s);
-    } finally {
-      changeAppState(AppState.loaded);
+      printException(
+          "ExampleStore.getExample", result.error, result.stackTrace);
     }
+
+    changeAppState(AppState.loaded);
+  }
+
+  @action
+  Future<void> getOtherExample() async {
+    appState = AppState.loading;
+
+    await handleResultWithCallback(
+      action: () async {
+        return await GetIt.I.get<IGetExampleUseCase>()();
+      },
+      onSuccess: (data) => debugPrint("Success"),
+      onError: (error, stackTrace) {
+        changeAppState(AppState.error);
+        printException("ExampleStore.getOtherExample", error, stackTrace);
+      },
+      onComplete: () => changeAppState(AppState.loaded),
+    );
   }
 }
