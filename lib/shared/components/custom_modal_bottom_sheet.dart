@@ -136,6 +136,6 @@ Future<bool?> showCustomModalBottomSheet(
       );
     }
   } catch (e, s) {
-    printException('CustomModalBottomSheet', e, s);
+    logException('CustomModalBottomSheet', e, s);
   }
 }
