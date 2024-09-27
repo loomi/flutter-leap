@@ -23,7 +23,9 @@ dependencies:
   flutter_secure_storage: 9.2.2
   encrypt: 5.0.3
   retrofit: 4.1.0
-  dio: 5.4.3+1
+  dio: 5.7.0
+  sentry_dio: ^8.9.0
+  sentry_flutter: ^8.9.0
   form_field_validator: 1.1.0
 
   package_info_plus: 4.2.0
@@ -56,12 +58,17 @@ dependencies:
   mobx_codegen: 2.4.0
   build_runner: 2.4.10
 
+  loomi_ui_flutter:
+    git:
+      url: https://github.com/loomi/loomi-ui-flutter.git
+
+  flutter_native_splash: any
+  json_annotation: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: 4.0.0
-  flutter_native_splash: 2.3.2
   flutter_launcher_icons: 0.13.1
 
 flutter_native_splash:
