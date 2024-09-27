@@ -8,11 +8,11 @@ class CustomBottomNavigationBar extends StatefulWidget {
   final Color? backgroundColor;
   int index;
   CustomBottomNavigationBar({
-    Key? key,
+    super.key,
     required this.onClick,
     required this.index,
     this.backgroundColor,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomBottomNavigationBar> createState() =>
@@ -110,8 +110,8 @@ class BottomNavigationBarIconButton extends StatelessWidget {
     required this.icon,
     required this.selectedIcon,
     this.selected = false,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

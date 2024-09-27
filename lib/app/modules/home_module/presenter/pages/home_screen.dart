@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:flutter_leap_v2/app/modules/home_module/presenter/stores/example_store.dart';
+import 'package:flutter_leap_v2/shared/utils/flavors_options.dart';
 
 import '../../../../../shared/components/bottom_navigation_bar.dart';
 import '../../../../../shared/utils/custom_colors.dart';
@@ -52,9 +53,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Container(
                     color: Colors.red.withOpacity(0.3),
-                    child: const Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [],
+                      children: [
+                        Text(FlavorsConfig().flavor.toString()),
+                      ],
                     ),
                   ),
                   Container(

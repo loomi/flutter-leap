@@ -29,7 +29,7 @@ abstract class _ExampleStore with Store {
       example = await GetIt.I.get<IGetExampleUseCase>()();
     } catch (e, s) {
       changeAppState(AppState.error);
-      printException("ExampleStore.getExample", e, s);
+      logException("ExampleStore.getExample", e, s);
     } finally {
       changeAppState(AppState.loaded);
     }

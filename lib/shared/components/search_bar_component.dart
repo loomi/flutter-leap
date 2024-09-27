@@ -24,8 +24,8 @@ class SearchBarComponent extends StatefulWidget {
     this.onFieldSubmitted,
     this.enabled = true,
     this.verticalPadding = 10.0,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<SearchBarComponent> createState() => _SearchBarComponentState();
@@ -56,6 +56,10 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
       padding: EdgeInsets.symmetric(
         horizontal: 14,
         vertical: widget.verticalPadding!,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: CustomColors.grey20,
       ),
       child: Row(
         children: [
@@ -92,21 +96,17 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
                   visible: widget.textEditingController != null &&
                       widget.textEditingController!.text.isNotEmpty,
                   child: GestureDetector(
+                    onTap: widget.onCloseAction,
                     child: Icon(
                       Icons.close,
                       color: CustomColors.black.withOpacity(0.3),
                     ),
-                    onTap: widget.onCloseAction,
                   ),
                 ),
               ),
             ),
           ),
         ],
-      ),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: CustomColors.grey20,
       ),
     );
   }
