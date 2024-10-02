@@ -1,8 +1,5 @@
 name: Flutter tests
-on:
-  pull_request:
-    branches:
-      - main
+on: [pull_request]
 
 jobs:
   run_flutter_unit_tests:
