@@ -7,7 +7,7 @@ import '../utils/authentication.dart';
 import '../utils/custom_colors.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
   static String routeName = "/splash-screen";
 
   @override

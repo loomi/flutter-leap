@@ -7,9 +7,9 @@ part "example_model.g.dart";
 @JsonSerializable()
 class ExampleModel extends ExampleEntity {
   const ExampleModel({
-    int id = -1,
-    String name = '',
-  }) : super(id: id, name: name);
+    super.id = -1,
+    super.name,
+  });
 
   factory ExampleModel.fromJson(Map<String, dynamic> json) =>
       _$ExampleModelFromJson(json);

@@ -6,12 +6,12 @@ import 'package:camera/camera.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:loomi_ui_flutter/loomi_ui.dart';
+import 'package:loomi_ui_flutter/widgets/camera/camera.dart';
 import 'package:path_provider/path_provider.dart';
 
 Future<File?> getImageHelper({required ImageSource source}) async {
-  final ImagePicker _picker = ImagePicker();
-  XFile? image = await _picker.pickImage(
+  final ImagePicker picker = ImagePicker();
+  XFile? image = await picker.pickImage(
     source: source,
   );
 
@@ -37,9 +37,9 @@ Future<File?> getVideoHelper({
   required ImageSource source,
   Duration? maxDuration,
 }) async {
-  final ImagePicker _picker = ImagePicker();
+  final ImagePicker picker = ImagePicker();
 
-  final pickedFile = await _picker.pickVideo(
+  final pickedFile = await picker.pickVideo(
     source: source,
     preferredCameraDevice: CameraDevice.front,
     maxDuration: maxDuration,
@@ -64,6 +64,7 @@ Future pushToCameraScreen({
   List<CameraDescription> cameras = await availableCameras();
 
   Navigator.push(
+    // ignore: use_build_context_synchronously
     context,
     MaterialPageRoute(
       builder: (context) => CameraScreen(

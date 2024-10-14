@@ -21,7 +21,7 @@ class CustomNetworkImage extends StatefulWidget {
   final double borderRadius;
 
   const CustomNetworkImage({
-    Key? key,
+    super.key,
     required this.imageUrl,
     this.alignment = Alignment.center,
     this.width,
@@ -35,7 +35,7 @@ class CustomNetworkImage extends StatefulWidget {
     this.errorTextStyle,
     this.progressIndicatorColor = Colors.blue,
     this.borderRadius = 0,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomNetworkImage> createState() => _CustomNetworkImageState();

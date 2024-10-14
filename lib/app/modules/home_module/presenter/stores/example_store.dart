@@ -36,8 +36,11 @@ abstract class _ExampleStore with Store {
       debugPrint("Success");
     } else if (result.isFailure) {
       changeAppState(AppState.error);
-      printException(
-          "ExampleStore.getExample", result.error, result.stackTrace);
+      logException(
+        "ExampleStore.getExample",
+        result.error,
+        StackTrace.current.toString(),
+      );
     }
 
     changeAppState(AppState.loaded);
@@ -54,7 +57,7 @@ abstract class _ExampleStore with Store {
       onSuccess: (data) => debugPrint("Success"),
       onError: (error, stackTrace) {
         changeAppState(AppState.error);
-        printException("ExampleStore.getOtherExample", error, stackTrace);
+        logException("ExampleStore.getOtherExample", error, stackTrace);
       },
       onComplete: () => changeAppState(AppState.loaded),
     );
