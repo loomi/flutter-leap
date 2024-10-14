@@ -2,6 +2,9 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
+import 'package:sentry_dio/sentry_dio.dart';
+
+import 'package:flutter_leap_v2/shared/utils/services/logging_errors_service.dart';
 
 import 'authentication.dart';
 import 'environments.dart';
@@ -51,6 +54,10 @@ class DioConfig {
         ],
       ),
     );
+
+    _dio?.addSentry(
+      captureFailedRequests: true,
+    );
   }
 
   Dio get dio {
@@ -83,9 +90,15 @@ class CustomInterceptors extends InterceptorsWrapper {
     DioException err,
     ErrorInterceptorHandler handler,
   ) async {
+    await LoggingErrorsService().captureOnDioErrorRequestData(err);
+
     switch (err.response?.statusCode) {
       case 401:
-        return DioErrorHelper.on401(dio: dio, err: err, handler: handler);
+        return DioErrorHelper.on401(
+          dio: dio,
+          err: err,
+          handler: handler,
+        );
       default:
         return handler.next(err);
     }

@@ -21,7 +21,6 @@ class _OfflineWrapperComponentState extends State<OfflineWrapperComponent> {
   @override
   Widget build(BuildContext context) {
     return ConnectivityWidgetWrapper(
-      child: widget.child,
       disableInteraction: false,
       color: CustomColors.primary,
       alignment: Alignment.bottomCenter,
@@ -64,6 +63,7 @@ class _OfflineWrapperComponentState extends State<OfflineWrapperComponent> {
           ),
         ),
       ),
+      child: widget.child,
     );
   }
 }

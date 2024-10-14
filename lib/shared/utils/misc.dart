@@ -3,18 +3,30 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import 'package:dio/dio.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'app_global_context.dart';
 import 'custom_colors.dart';
 import 'fonts.dart';
 
-void printException(String identifier, e, s) {
-  log(identifier);
+void logException(String identifier, e, s) async {
   if (e is DioException) {
     log("${e.requestOptions.baseUrl}${e.requestOptions.path}");
     log(e.response.toString());
     log(e.error.toString());
   }
+  await Sentry.captureException(
+    e,
+    stackTrace: s,
+    withScope: (scope) {
+      scope.setTag('error.identifier', identifier);
+      scope.setContexts('error', {
+        'message': e.toString(),
+      });
+    },
+  );
+
+  log(identifier);
   log(e.toString());
   log(s.toString());
 }
