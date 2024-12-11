@@ -6,11 +6,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:flutter_leap_v2/app/app_module.dart';
-import 'package:flutter_leap_v2/shared/injector/get_it_injector.dart';
 import 'package:flutter_leap_v2/shared/utils/flavors_options.dart';
 
 import 'app_widget.dart';
+import 'shared/injector/injectable.dart';
 import 'shared/utils/custom_colors.dart';
 
 void bootstrap({
@@ -25,7 +24,7 @@ void bootstrap({
 
       FlavorsConfig.initialize(flavor);
 
-      AppModule(injector: GetItInjector()).registerAllDependencies();
+      configureDependencies();
 
       SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(

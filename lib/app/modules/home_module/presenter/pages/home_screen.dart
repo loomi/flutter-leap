@@ -3,8 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import 'package:get_it/get_it.dart';
+import 'package:loomi_ui_flutter/widgets/custom_button.dart';
 
 import 'package:flutter_leap_v2/app/modules/home_module/presenter/stores/example_store.dart';
+import 'package:flutter_leap_v2/shared/components/custom_snack_bar.dart';
 import 'package:flutter_leap_v2/shared/utils/flavors_options.dart';
 
 import '../../../../../shared/components/bottom_navigation_bar.dart';
@@ -94,6 +96,19 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+    );
+  }
+
+  Future getExample() async {
+    var result = await _exampleStore.getExample();
+
+    result.onFailure(
+      (failure) {
+        showCustomSnackBar(
+          context,
+          textContent: failure.message,
+        );
+      },
     );
   }
 }

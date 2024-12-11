@@ -21,10 +21,4 @@ class AppModule {
     }
     return routes;
   }
-
-  void registerAllDependencies() {
-    for (var module in _registeredModules) {
-      module.registerDependencies(injector);
-    }
-  }
 }

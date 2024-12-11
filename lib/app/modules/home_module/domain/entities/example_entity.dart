@@ -2,21 +2,25 @@ import 'package:flutter/foundation.dart';
 
 @immutable
 class ExampleEntity {
-  final int id;
-  final String name;
+  final int? id;
+  final int? userId;
+  final String? title;
 
   const ExampleEntity({
-    this.id = 0,
-    this.name = '',
+    this.id,
+    this.userId,
+    this.title,
   });
 
   ExampleEntity copyWith({
     int? id,
-    String? name,
+    int? userId,
+    String? title,
   }) {
     return ExampleEntity(
       id: id ?? this.id,
-      name: name ?? this.name,
+      title: title ?? this.title,
+      userId: userId ?? this.userId,
     );
   }
 }
