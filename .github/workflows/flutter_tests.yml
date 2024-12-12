@@ -1,0 +1,25 @@
+name: Flutter tests
+on: [pull_request]
+
+jobs:
+  run_flutter_unit_tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.1" 
+          
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build Runner Files Generation
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+      
+      - run: flutter test
