@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_leap_v2/shared/utils/helpers/result_handler.dart';
+
 import 'package:get_it/get_it.dart';
+import 'package:injectable/injectable.dart';
 import 'package:mobx/mobx.dart';
+import 'package:result_dart/result_dart.dart';
+
+import 'package:flutter_leap_v2/app/modules/home_module/domain/errors/errors.dart';
+import 'package:flutter_leap_v2/shared/utils/misc.dart';
 
 import '../../../../../shared/utils/app_state.dart';
-import '../../../../../shared/utils/misc.dart';
 import '../../domain/usecases/intefaces/i_get_example_uc.dart';
 import '../../infra/models/example_model.dart';
 
 part 'example_store.g.dart';
 
+@lazySingleton
 class ExampleStore = _ExampleStore with _$ExampleStore;
 
 abstract class _ExampleStore with Store {
@@ -25,41 +30,28 @@ abstract class _ExampleStore with Store {
   }
 
   @action
-  Future<void> getExample() async {
+  AsyncResult<ExampleModel, ExampleError> getExample() async {
     appState = AppState.loading;
 
-    var result = await handleResult(() async {
-      return await GetIt.I.get<IGetExampleUseCase>()();
-    });
+    var result = await GetIt.I.get<IGetExampleUseCase>()();
 
-    if (result.isSuccess) {
-      debugPrint("Success");
-    } else if (result.isFailure) {
-      changeAppState(AppState.error);
-      logException(
-        "ExampleStore.getExample",
-        result.error,
-        StackTrace.current.toString(),
-      );
-    }
-
-    changeAppState(AppState.loaded);
-  }
-
-  @action
-  Future<void> getOtherExample() async {
-    appState = AppState.loading;
-
-    await handleResultWithCallback(
-      action: () async {
-        return await GetIt.I.get<IGetExampleUseCase>()();
+    return result.fold(
+      (success) {
+        debugPrint("Success ${success.toJson()}");
+        changeAppState(AppState.loaded);
+        return Success(success);
       },
-      onSuccess: (data) => debugPrint("Success"),
-      onError: (error, stackTrace) {
+      (failure) {
         changeAppState(AppState.error);
-        logException("ExampleStore.getOtherExample", error, stackTrace);
+
+        logException(
+          "ExampleStore.getExample",
+          failure.message,
+          StackTrace.current.toString(),
+        );
+
+        return Failure(failure);
       },
-      onComplete: () => changeAppState(AppState.loaded),
     );
   }
 }
