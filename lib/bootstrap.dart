@@ -6,9 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:flutter_leap_v2/app/app_module.dart';
 import 'package:flutter_leap_v2/shared/components/default_error_screen.dart';
-
 import 'package:flutter_leap_v2/shared/utils/flavors_options.dart';
 
 import 'app_widget.dart';
