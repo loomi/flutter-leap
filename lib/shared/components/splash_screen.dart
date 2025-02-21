@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
+import 'package:flutter_leap_v2/shared/utils/theme/app_colors_theme.dart';
+
 import '../../app/modules/home_module/presenter/pages/home_screen_middleware.dart';
 import '../utils/authentication.dart';
-import '../utils/custom_colors.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
-  static String routeName = "/splash-screen";
+
+  static const String routeName = "/splash-screen";
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -45,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: CustomColors.white,
+        color: appColors.white,
         width: double.infinity,
         height: double.infinity,
       ),

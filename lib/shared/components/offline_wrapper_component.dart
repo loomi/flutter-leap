@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 
-import '../utils/custom_colors.dart';
+import 'package:flutter_leap_v2/shared/utils/theme/app_colors_theme.dart';
+
 import '../utils/fonts.dart';
 
 class OfflineWrapperComponent extends StatefulWidget {
@@ -22,7 +23,7 @@ class _OfflineWrapperComponentState extends State<OfflineWrapperComponent> {
   Widget build(BuildContext context) {
     return ConnectivityWidgetWrapper(
       disableInteraction: false,
-      color: CustomColors.primary,
+      color: appColors.primary,
       alignment: Alignment.bottomCenter,
       offlineWidget: IgnorePointer(
         ignoring: true,
@@ -34,7 +35,7 @@ class _OfflineWrapperComponentState extends State<OfflineWrapperComponent> {
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: CustomColors.black.withOpacity(0.75),
+                  color: appColors.black.withOpacity(0.75),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Padding(
@@ -44,7 +45,7 @@ class _OfflineWrapperComponentState extends State<OfflineWrapperComponent> {
                     children: [
                       Icon(
                         Icons.error_outline,
-                        color: CustomColors.white,
+                        color: appColors.white,
                       ),
                       const SizedBox(
                         width: 20,
@@ -52,7 +53,7 @@ class _OfflineWrapperComponentState extends State<OfflineWrapperComponent> {
                       Text(
                         "Sem conexão com a internet",
                         style: Fonts.mobileBody1.copyWith(
-                          color: CustomColors.white,
+                          color: appColors.white,
                         ),
                       ),
                     ],

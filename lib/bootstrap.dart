@@ -6,14 +6,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:flutter_leap_v2/app/app_module.dart';
 import 'package:flutter_leap_v2/shared/components/default_error_screen.dart';
-
 import 'package:flutter_leap_v2/shared/utils/flavors_options.dart';
+import 'package:flutter_leap_v2/shared/utils/theme/app_colors_theme.dart';
 
 import 'app_widget.dart';
 import 'shared/injector/injectable.dart';
-import 'shared/utils/custom_colors.dart';
 
 void bootstrap({
   required FlavorsOptions flavor,
@@ -33,7 +31,7 @@ void bootstrap({
         SystemUiOverlayStyle(
           statusBarIconBrightness: Brightness.dark,
           statusBarBrightness: Brightness.light,
-          statusBarColor: CustomColors.black.withOpacity(0.2),
+          statusBarColor: appColors.black.withOpacity(0.2),
         ),
       );
 

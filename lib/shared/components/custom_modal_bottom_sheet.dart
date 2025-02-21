@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import '../utils/custom_colors.dart';
+import 'package:flutter_leap_v2/shared/utils/theme/app_colors_theme.dart';
+
 import '../utils/misc.dart';
 
 // ignore: body_might_complete_normally_nullable
@@ -44,7 +45,7 @@ Future<bool?> showCustomModalBottomSheet(
                     },
                     icon: Icon(
                       Icons.close,
-                      color: CustomColors.secondary,
+                      color: appColors.secondary,
                     ),
                   ),
                 ),
@@ -117,7 +118,7 @@ Future<bool?> showCustomModalBottomSheet(
                                     },
                                     icon: Icon(
                                       Icons.close,
-                                      color: CustomColors.black,
+                                      color: appColors.black,
                                     ),
                                   ),
                                 ),

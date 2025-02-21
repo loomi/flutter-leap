@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:connectivity_wrapper/connectivity_wrapper.dart';
 
+import 'package:flutter_leap_v2/shared/utils/theme/app_colors_theme.dart';
+
 import 'app/app_module.dart';
 import 'shared/components/offline_wrapper_component.dart';
 import 'shared/components/splash_screen.dart';
 import 'shared/utils/app_global_context.dart';
-import 'shared/utils/custom_colors.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
@@ -37,7 +38,7 @@ class _AppWidgetState extends State<AppWidget> {
         title: 'Flutter Leap V2',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primaryColor: CustomColors.primary,
+          primaryColor: appColors.primary,
         ),
         home: const SplashScreen(),
         routes: AppModule().routes,

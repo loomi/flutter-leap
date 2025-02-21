@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'package:loomi_ui_flutter/widgets/custom_button.dart';
 
+import 'package:flutter_leap_v2/shared/utils/theme/app_colors_theme.dart';
+
 import '../../components/custom_modal_bottom_sheet.dart';
-import '../custom_colors.dart';
 import '../fonts.dart';
 
 void showConfirmationDialogHelper({
@@ -36,7 +37,7 @@ void showConfirmationDialogHelper({
               body,
               textAlign: TextAlign.center,
               style: Fonts.mobileBody2.copyWith(
-                color: CustomColors.black.withOpacity(0.8),
+                color: appColors.black.withOpacity(0.8),
               ),
             ),
           ),
@@ -54,10 +55,10 @@ void showConfirmationDialogHelper({
                           Navigator.of(context).pop();
                         },
                         expanded: true,
-                        backgroundColor: CustomColors.primary,
+                        backgroundColor: appColors.primary,
                         buttonTextStyle:
                             Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                  color: CustomColors.white,
+                                  color: appColors.white,
                                 ),
                       ),
                     ),
@@ -94,7 +95,7 @@ void showConfirmationDialogHelper({
               body,
               textAlign: TextAlign.center,
               style: Fonts.mobileBody2.copyWith(
-                color: CustomColors.black.withOpacity(0.8),
+                color: appColors.black.withOpacity(0.8),
               ),
             ),
           ),
@@ -105,10 +106,10 @@ void showConfirmationDialogHelper({
                 Expanded(
                   child: CustomButton(
                     text: confirmButtonText ?? "Ok",
-                    backgroundColor: CustomColors.primary,
+                    backgroundColor: appColors.primary,
                     buttonTextStyle:
                         Theme.of(context).textTheme.bodyLarge!.copyWith(
-                              color: CustomColors.white,
+                              color: appColors.white,
                             ),
                     onTap: () {
                       Navigator.of(context).pop();

@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:flutter_leap_v2/shared/utils/theme/app_colors_theme.dart';
+
 import '../utils/assets.dart';
-import '../utils/custom_colors.dart';
 import '../utils/fonts.dart';
 
 class SearchBarComponent extends StatefulWidget {
@@ -59,7 +60,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: CustomColors.grey20,
+        color: appColors.black.withOpacity(0.2),
       ),
       child: Row(
         children: [
@@ -80,7 +81,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
               },
               style: Fonts.mobileBody1.copyWith(
                 fontWeight: FontWeight.w500,
-                color: CustomColors.black,
+                color: appColors.black,
               ),
               controller: widget.textEditingController,
               enabled: widget.enabled,
@@ -90,7 +91,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
                 hintText: widget.hintText,
                 hintStyle: Fonts.mobileBody1.copyWith(
                   fontWeight: FontWeight.normal,
-                  color: CustomColors.black.withOpacity(.4),
+                  color: appColors.black.withOpacity(.4),
                 ),
                 suffixIcon: Visibility(
                   visible: widget.textEditingController != null &&
@@ -99,7 +100,7 @@ class _SearchBarComponentState extends State<SearchBarComponent> {
                     onTap: widget.onCloseAction,
                     child: Icon(
                       Icons.close,
-                      color: CustomColors.black.withOpacity(0.3),
+                      color: appColors.black.withOpacity(0.3),
                     ),
                   ),
                 ),
