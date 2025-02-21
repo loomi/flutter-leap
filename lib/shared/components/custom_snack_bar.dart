@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../utils/custom_colors.dart';
+import 'package:flutter_leap_v2/shared/utils/theme/app_colors_theme.dart';
+
 import '../utils/fonts.dart';
 
 showCustomSnackBar(
@@ -22,7 +23,7 @@ showCustomSnackBar(
 }) =>
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: backgroundColor ?? CustomColors.primary,
+        backgroundColor: backgroundColor ?? appColors.primary,
         padding: padding,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
@@ -37,7 +38,7 @@ showCustomSnackBar(
               textContent ?? "",
               style: textStyle ??
                   Fonts.mobileCaption1.copyWith(
-                    color: defaultTextColor ?? CustomColors.black,
+                    color: defaultTextColor ?? appColors.black,
                   ),
             ),
         behavior: SnackBarBehavior.floating,

@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:flutter_leap_v2/shared/utils/theme/app_colors_theme.dart';
+
 import 'app_global_context.dart';
-import 'custom_colors.dart';
 import 'fonts.dart';
 
 void logException(String identifier, e, s) async {
@@ -35,14 +36,14 @@ final snackBar = SnackBar(
   content: Text(
     'Sessão finalizada, realize o login novamente.',
     style: Fonts.mobileBody1.copyWith(
-      color: CustomColors.black,
+      color: appColors.black,
     ),
   ),
   behavior: SnackBarBehavior.floating,
   showCloseIcon: true,
-  closeIconColor: CustomColors.white,
+  closeIconColor: appColors.white,
   duration: const Duration(seconds: 3),
-  backgroundColor: CustomColors.white,
+  backgroundColor: appColors.white,
   elevation: 12,
   shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(12),

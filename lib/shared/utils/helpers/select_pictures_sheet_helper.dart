@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import '../custom_colors.dart';
+import 'package:flutter_leap_v2/shared/utils/theme/app_colors_theme.dart';
 
 void openSelectPictureSheet(
   BuildContext context, {
@@ -27,7 +27,7 @@ void openSelectPictureSheet(
                       height: 55,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: CustomColors.white,
+                        color: appColors.white,
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(15),
                           topRight: Radius.circular(15),
@@ -37,7 +37,7 @@ void openSelectPictureSheet(
                         "Escolher na biblioteca",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: CustomColors.black,
+                          color: appColors.black,
                           fontSize: 16,
                         ),
                       ),
@@ -50,7 +50,7 @@ void openSelectPictureSheet(
                       height: 55,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: CustomColors.white,
+                        color: appColors.white,
                         borderRadius: const BorderRadius.only(
                           bottomRight: Radius.circular(15),
                           bottomLeft: Radius.circular(15),
@@ -60,7 +60,7 @@ void openSelectPictureSheet(
                         "Tirar foto",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: CustomColors.black,
+                          color: appColors.black,
                           fontSize: 16,
                         ),
                       ),
@@ -74,7 +74,7 @@ void openSelectPictureSheet(
                       height: 55,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: CustomColors.white,
+                        color: appColors.white,
                         borderRadius: const BorderRadius.all(
                           Radius.circular(
                             15,
@@ -85,7 +85,7 @@ void openSelectPictureSheet(
                         "Cancelar",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: CustomColors.black,
+                          color: appColors.black,
                           fontSize: 16,
                         ),
                       ),

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-import '../custom_colors.dart';
+import 'package:flutter_leap_v2/shared/utils/theme/app_colors_theme.dart';
 
 import 'image_picker_helper.dart';
 
@@ -41,7 +41,7 @@ void openSelectVideoSheet(BuildContext context) async {
                       height: 55,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: CustomColors.white,
+                        color: appColors.white,
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(15),
                           topRight: Radius.circular(15),
@@ -51,7 +51,7 @@ void openSelectVideoSheet(BuildContext context) async {
                         "Gravar Vídeo",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: CustomColors.black,
+                          color: appColors.black,
                           fontSize: 16,
                         ),
                       ),
@@ -80,7 +80,7 @@ void openSelectVideoSheet(BuildContext context) async {
                       height: 55,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: CustomColors.white,
+                        color: appColors.white,
                         borderRadius: const BorderRadius.only(
                           bottomRight: Radius.circular(15),
                           bottomLeft: Radius.circular(15),
@@ -90,7 +90,7 @@ void openSelectVideoSheet(BuildContext context) async {
                         "Buscar Vídeo",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: CustomColors.black,
+                          color: appColors.black,
                           fontSize: 16,
                         ),
                       ),
@@ -104,7 +104,7 @@ void openSelectVideoSheet(BuildContext context) async {
                       height: 55,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: CustomColors.white,
+                        color: appColors.white,
                         borderRadius: const BorderRadius.all(
                           Radius.circular(
                             15,
@@ -115,7 +115,7 @@ void openSelectVideoSheet(BuildContext context) async {
                         "Cancelar",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          color: CustomColors.black,
+                          color: appColors.black,
                           fontSize: 16,
                         ),
                       ),

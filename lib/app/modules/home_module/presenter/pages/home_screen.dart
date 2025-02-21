@@ -3,14 +3,14 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 
 import 'package:get_it/get_it.dart';
-import 'package:loomi_ui_flutter/widgets/custom_button.dart';
 
 import 'package:flutter_leap_v2/app/modules/home_module/presenter/stores/example_store.dart';
 import 'package:flutter_leap_v2/shared/components/custom_snack_bar.dart';
 import 'package:flutter_leap_v2/shared/utils/flavors_options.dart';
+import 'package:flutter_leap_v2/shared/utils/theme/app_colors_theme.dart';
+import 'package:flutter_leap_v2/shared/utils/theme/app_text_theme.dart';
 
 import '../../../../../shared/components/bottom_navigation_bar.dart';
-import '../../../../../shared/utils/custom_colors.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = "/homeScreen";
@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColors.white,
+      backgroundColor: appColors.white,
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -54,26 +54,39 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
                 children: [
                   Container(
-                    color: Colors.red.withOpacity(0.3),
+                    color: appColors.primary,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(FlavorsConfig().flavor.toString()),
+                        Text(
+                          FlavorsConfig().flavor.toString(),
+                          style: currentTextStyles.headline,
+                        ),
                       ],
                     ),
                   ),
                   Container(
                     color: Colors.blue.withOpacity(0.3),
-                    child: const Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [],
+                      children: [
+                        Text(
+                          FlavorsConfig().flavor.toString(),
+                          style: currentTextStyles.bodyText,
+                        ),
+                      ],
                     ),
                   ),
                   Container(
                     color: Colors.green.withOpacity(0.3),
-                    child: const Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [],
+                      children: [
+                        Text(
+                          FlavorsConfig().flavor.toString(),
+                          style: currentTextStyles.subtitle,
+                        ),
+                      ],
                     ),
                   ),
                 ],
