@@ -14,7 +14,7 @@ class ExampleRepositoryImpl implements IExampleRepository {
   ExampleRepositoryImpl({required this.exampleDatasource});
 
   @override
-  AsyncResult<ExampleModel, ExampleError> getExample() async {
+  AsyncResultDart<ExampleModel, ExampleError> getExample() async {
     final result = await exampleDatasource.getExample();
 
     return result.fold(
