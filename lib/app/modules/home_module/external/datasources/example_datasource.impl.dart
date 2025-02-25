@@ -13,7 +13,7 @@ class ExampleDatasourceImpl implements ExampleDatasource {
   ExampleDatasourceImpl({required this.httpClient});
 
   @override
-  AsyncResult<Map<String, dynamic>, ExampleError> getExample() async {
+  AsyncResultDart<Map<String, dynamic>, ExampleError> getExample() async {
     try {
       var result = await httpClient.get(
         'todos/1',

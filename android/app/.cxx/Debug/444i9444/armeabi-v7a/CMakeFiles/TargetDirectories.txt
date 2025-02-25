@@ -1,0 +1,2 @@
+C:/Users/italo/OneDrive/Documentos/flutter_projects/flutter-leap/android/app/.cxx/Debug/444i9444/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/italo/OneDrive/Documentos/flutter_projects/flutter-leap/android/app/.cxx/Debug/444i9444/armeabi-v7a/CMakeFiles/rebuild_cache.dir

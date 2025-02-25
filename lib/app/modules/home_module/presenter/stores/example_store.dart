@@ -30,7 +30,7 @@ abstract class _ExampleStore with Store {
   }
 
   @action
-  AsyncResult<ExampleModel, ExampleError> getExample() async {
+  AsyncResultDart<ExampleModel, ExampleError> getExample() async {
     appState = AppState.loading;
 
     var result = await GetIt.I.get<IGetExampleUseCase>()();

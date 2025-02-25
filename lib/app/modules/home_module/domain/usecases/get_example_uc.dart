@@ -12,7 +12,7 @@ import 'intefaces/i_get_example_uc.dart';
 @LazySingleton(as: IGetExampleUseCase)
 class GetExampleUseCase implements IGetExampleUseCase {
   @override
-  AsyncResult<ExampleModel, ExampleError> call() async {
+  AsyncResultDart<ExampleModel, ExampleError> call() async {
     var result = await GetIt.I.get<IExampleRepository>().getExample();
 
     return result;
